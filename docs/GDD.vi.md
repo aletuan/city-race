@@ -1,6 +1,8 @@
-# City Race GDD v0.1 Tiếng Việt
+# City Race GDD v0.2 Tiếng Việt
 
-Tài liệu thiết kế game GDD v0.1 • Ngày 03/10/2026 • Bản nháp để phát triển bản chơi thử.
+Tài liệu thiết kế game GDD v0.2 • Ngày 03/10/2026 • Bản nháp để phát triển bản chơi thử.
+
+Bản 0.2 ghi nhận công nghệ đã chốt và việc kiểm chứng Web/Android sớm. Phạm vi gameplay giữ nguyên. Xem [tech stack](TECH_STACK.vi.md) và [quy ước kỹ thuật](ENGINEERING_GUIDELINES.vi.md).
 
 Game đua xe máy tới đích qua giao thông giờ cao điểm ở Sài Gòn. Mỗi người xuất phát từ một nhà trong khu phố, trực tiếp lái bằng một ngón tay và gặp nhau trong dòng xe. Niềm vui đến từ quan sát, chọn đường, xử lý sự cố và những khoảnh khắc bất ngờ cùng bạn bè.
 
@@ -10,7 +12,7 @@ Tài liệu ghi lại định hướng đã thống nhất và đề xuất ph�
 
 ## 1 Định hướng đã thống nhất
 
-- Phát hành trên iOS trước; có thể mở rộng Android sau.
+- Phát hành iOS trước, dự kiến mở rộng Android và stack đã chọn hỗ trợ Web. Kiểm chứng Android/Web sớm; chưa chốt thời điểm phát hành hai nền tảng này.
 
 - Chơi nhiều người cùng lúc, thi tới đích; người chơi trực tiếp điều khiển xe bằng một ngón tay.
 
@@ -125,9 +127,9 @@ Phong cách ăn mặc không khóa nghề nghiệp hay kịch bản. Chưa dùng
 
 **Bản đầu chơi được hoàn chỉnh:** một khu phố, kịch bản đi làm buổi sáng, phòng riêng 2–4 người, bốn tình huống trong phạm vi bản đầu, cá nhân hóa cơ bản, kết quả và chơi lại. Không bắt buộc tài khoản để bắt đầu thử nghiệm.
 
-**Để sau:** mưa và ngập, thủng săm, tan tầm, giao hàng, chở người yêu, bản đồ mới, khác biệt hiệu năng xe, trang trí nhà, ghép trận công khai, xếp hạng mùa, kinh tế trong game và kiếm tiền. Android là hướng mở rộng, chưa thuộc bản đầu.
+**Để sau:** mưa và ngập, thủng săm, tan tầm, giao hàng, chở người yêu, bản đồ mới, khác biệt hiệu năng xe, trang trí nhà, ghép trận công khai, xếp hạng mùa, kinh tế trong game và kiếm tiền. Phát hành Android là hướng mở rộng; kiểm chứng kỹ thuật Android và Web thuộc các bản thử sớm.
 
-Chưa chốt engine, dịch vụ mạng, ngân sách, lịch sản xuất hoặc cấu hình iPhone tối thiểu. Việc chọn công nghệ diễn ra sau tài liệu này và phải tính đến multiplayer cùng khả năng mở rộng Android.
+Đã chọn Unity + C#. Kiến trúc khởi đầu dùng Unity 6.3 LTS, URP và Input System, với NGO, Unity Transport và Multiplayer Services Sessions/Relay là bộ thư viện mạng thử nghiệm đầu tiên. Xem tech stack để biết điều kiện kiểm chứng, gồm độ trễ và tương thích Web. Ngân sách, lịch sản xuất, phiên bản package chính xác và thiết bị tối thiểu vẫn chưa chốt.
 
 ## 8 Giả thuyết cần kiểm chứng
 
@@ -146,4 +148,4 @@ Nếu người chơi liên tục mất dấu xe, điều khiển khó hoặc kh�
 
 Những quyết định cần chốt sau bản thử: cơ chế kéo và phanh, góc camera, mức va chạm giữa người chơi, thời lượng trận, cách thoát kẹt và độ khác biệt giữa các xe.
 
-**Bước tiếp theo:** dựng bản thử cảm giác lái trên iPhone theo phạm vi ở mục 7, ghi lại kết quả theo mục 8 và cập nhật GDD v0.2.
+**Bước tiếp theo:** dựng bản thử cảm giác lái trên iPhone theo phạm vi ở mục 7, thêm kiểm tra Android/Web sớm theo tech stack, ghi kết quả theo mục 8 và cập nhật GDD v0.3.

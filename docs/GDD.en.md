@@ -1,6 +1,8 @@
-# City Race GDD v0.1 English
+# City Race GDD v0.2 English
 
-Game Design Document GDD v0.1 • 3 October 2026 • Draft for prototype development.
+Game Design Document GDD v0.2 • 3 October 2026 • Draft for prototype development.
+
+Revision 0.2 records the confirmed technology direction and early Web/Android validation. Gameplay scope is unchanged. See [technical stack](TECH_STACK.en.md) and [engineering guidelines](ENGINEERING_GUIDELINES.en.md).
 
 A motorbike race through rush-hour traffic in Sài Gòn. Each player starts from a different home in the same neighbourhood, rides directly with one finger, and meets the others in traffic. The fun comes from observation, route choices, handling setbacks, and unexpected moments with friends.
 
@@ -10,7 +12,7 @@ This document records the agreed direction and proposes the initial implementati
 
 ## 1 Agreed direction
 
-- Launch on iOS first, with possible Android expansion later.
+- Launch on iOS first, with Android expansion planned and Web supported by the chosen stack. Validate Android and Web early; their release timing remains undecided.
 
 - Simultaneous multiplayer racing to a destination, with direct one-finger riding controls.
 
@@ -125,9 +127,9 @@ Clothing style does not lock players into an occupation or scenario. Do not use 
 
 **First complete playable version:** one neighbourhood, a morning commute scenario, private rooms for 2–4 players, the four initial situations, basic customisation, results, and replay. An account is not required to start testing.
 
-**Later:** rain and flooding, punctures, evening commutes, deliveries, taking a romantic partner out, new maps, bike performance differences, home decoration, public matchmaking, seasonal rankings, an in-game economy, and monetisation. Android is a future expansion, outside the initial scope.
+**Later:** rain and flooding, punctures, evening commutes, deliveries, taking a romantic partner out, new maps, bike performance differences, home decoration, public matchmaking, seasonal rankings, an in-game economy, and monetisation. Android release is a future expansion; Android and Web technical validation belong to the early prototypes.
 
-The engine, networking service, budget, production schedule, and minimum supported iPhone are not yet decided. Technology selection follows this document and must account for multiplayer and potential Android expansion.
+Unity + C# is selected. The starting architecture uses Unity 6.3 LTS, URP and Input System, with NGO, Unity Transport and Multiplayer Services Sessions/Relay as the initial networking candidate. See the technical stack for validation gates, including latency and Web compatibility. Budget, production schedule, exact package versions and minimum supported devices remain undecided.
 
 ## 8 Hypotheses to validate
 
@@ -146,4 +148,4 @@ If players repeatedly lose track of their bike, struggle with controls, or do no
 
 Decisions to finalise after the prototype: dragging and braking mechanics, camera angle, player-to-player collision severity, race duration, recovery from being stuck, and differences between bikes.
 
-**Next step:** build the iPhone riding prototype within the scope in section 7, record findings against section 8, and update the GDD to v0.2.
+**Next step:** build the iPhone riding prototype within the scope in section 7, include early Android/Web checks from the technical stack, record findings against section 8, and update the GDD to v0.3.
