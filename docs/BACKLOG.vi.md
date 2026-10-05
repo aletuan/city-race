@@ -10,7 +10,7 @@ P0 chặn mốc hiện tại; P1 đi sau nền tảng. Hai ngôn ngữ dùng chu
 | CR-002 | P0 | Cài/kích hoạt Unity 6000.3.25f1 Apple Silicon và iOS support; xác nhận mở Editor | Đăng nhập/license Unity; đã cho phép cài | Xong; đã xác minh license Hub và executable Editor |
 | CR-003 | P0 | Khởi tạo từ URP template đã cài; commit settings, package lock, metadata thật; compile sạch | CR-002 | Xong; đã sinh settings/lock/metadata, batch compile đạt |
 | CR-004 | P0 | Sinh cảnh camera, đường, nhà, mô hình xe; quan sát URP render | CR-003 | Xong; đã quan sát Smoke trong Editor Play Mode |
-| CR-005 | P0 | Xuất Xcode project, ký với team đã chọn, cài/chạy iPhone thật; quan sát cảnh | CR-004, signing Apple hợp lệ | Bị chặn: xuất iOS + build native chưa ký đạt; Xcode lỗi tải team |
+| CR-005 | P0 | Xuất Xcode project, ký với team đã chọn, cài/chạy iPhone thật; quan sát cảnh | CR-004, signing Apple hợp lệ | Xong; đã ký, cài, chạy và kiểm tra ảnh iPhone |
 | CR-006 | P1 | Cài Web support, build và phục vụ qua HTTPS; kiểm tra cảnh/tải trên trình duyệt | CR-004, dung lượng | Chưa làm |
 | CR-010 | P0 | Input pointer chuẩn hóa, phanh khi nhả/mất focus; chuột/cảm ứng nhất quán | M0 | Chưa làm |
 | CR-011 | P0 | Bộ điều khiển xe có tăng tốc/rẽ/phanh; so sánh frame rate | CR-010 | Chưa làm |
@@ -26,7 +26,7 @@ P0 chặn mốc hiện tại; P1 đi sau nền tảng. Hai ngôn ngữ dùng chu
 - Đã giải quyết trở ngại dung lượng: ngày 05/10 internal còn khoảng 21 GiB sau cài đặt, T7 khoảng 870 GiB. Tiếp tục kiểm tra dung lượng tạm khi cài.
 - Đã cài Hub 3.22.2 và Editor 6000.3.25f1 ARM64 cùng iOS/Web. Đã xác minh license Personal và executable Editor. CR-003/004 đạt với URP template kèm bộ cài; tiếp theo là signing/xuất iOS và chạy thiết bị.
 - Có Xcode 26.6. iPhone 15 Pro Max đã từng pair hiện báo unavailable; kết nối và kiểm tra lại OS/Developer Mode trước khi chạy thử.
-- Apple Development identity local báo hết hạn; không có identity local hợp lệ. City Crew dùng Expo/EAS và ghi nhận đã phát hành App Store. Cần xác minh Apple team hiện có trong Xcode; chưa kiểm tra credential từ xa.
+- Đã giải quyết signing sau đăng nhập lại Xcode: automatic signing và chạy iPhone thật đạt. Không sửa credential City Crew.
 - Chưa có Git LFS; cài/cấu hình trước khi thêm asset nguồn nhị phân lớn. Công việc hiện tại chỉ có text.
 
 Chi tiết môi trường và bước tiếp tục trong [Setup](SETUP.vi.md). Không đánh dấu CR-003–005 xong trước khi công cụ chạy thành công thật.
