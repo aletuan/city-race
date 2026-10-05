@@ -63,6 +63,17 @@ namespace CityRace.Tests
         }
 
         [Test]
+        public void ZonesMatchCornerHuggingAndThePaintedFinishSquare()
+        {
+            // Inside of a 6 m-wide corner: ~3.5 m from the gate centre (missed by the old 2.7 m radius).
+            Assert.That(PracticeZones.ReachesGate(2.5f, 2.5f), Is.True);
+            Assert.That(PracticeZones.ReachesGate(0f, 4.6f), Is.False);
+            // Corners of the 3 x 3 m square count; outside it does not.
+            Assert.That(PracticeZones.InsideFinish(1.45f, -1.45f), Is.True);
+            Assert.That(PracticeZones.InsideFinish(0f, 2.1f), Is.False);
+        }
+
+        [Test]
         public void RecoveryCostsTimeAndCannotAdvanceOrSkipBacktracking()
         {
             var progress = new PracticeProgress(6);
@@ -101,6 +112,25 @@ namespace CityRace.Tests
         }
 
         [UnityTest]
+        public IEnumerator StoppingInCornerOfFinishSquareStopsTheClock()
+        {
+            yield return SceneManager.LoadSceneAsync("Practice", LoadSceneMode.Additive);
+            var course = Object.FindFirstObjectByType<PracticeCourse>();
+            yield return null;
+            var motor = course.GetComponent<BikeMotor>();
+            Time.timeScale = 4f;
+            // Field report 0.0.4: stopped on the yellow square but the timer kept running.
+            var corner = new Vector3(1.4f, 0f, -1.4f);
+            yield return DriveRoute(course, motor, corner);
+            Assert.That(course.Progress.Finished, Is.True, $"Stopped at {motor.transform.position}, gate {course.Progress.NextCheckpoint}");
+            var finishOffset = motor.transform.position - course.NextPoint;
+            Assert.That(new Vector2(finishOffset.x, finishOffset.z).magnitude, Is.GreaterThan(1.8f), "Must exercise the area the old circular check rejected.");
+            var time = course.Progress.ElapsedSeconds;
+            yield return new WaitForSeconds(1f);
+            Assert.That(course.Progress.ElapsedSeconds, Is.EqualTo(time), "Clock must stop once finished.");
+        }
+
+        [UnityTest]
         public IEnumerator AuthoredCourseCanBeDrivenToFinishAndRestarted()
         {
             yield return SceneManager.LoadSceneAsync("Practice", LoadSceneMode.Additive);
@@ -109,14 +139,7 @@ namespace CityRace.Tests
             yield return null;
             var motor = course.GetComponent<BikeMotor>();
             Time.timeScale = 4f;
-            for (var i = 0; i < 4000 && !course.Progress.Finished; i++)
-            {
-                var delta = course.NextPoint - motor.transform.position;
-                var direction = new Vector2(delta.x, delta.z);
-                var throttle = course.IsFinalApproach && direction.magnitude < 1.4f ? 0f : .55f;
-                motor.SetCommand(direction.normalized * throttle);
-                yield return new WaitForFixedUpdate();
-            }
+            yield return DriveRoute(course, motor, Vector3.zero);
             Assert.That(course.Progress.Finished, Is.True, $"Stuck at {motor.transform.position}, gate {course.Progress.NextCheckpoint}");
             Assert.That(motor.Speed, Is.LessThan(.01f));
             Assert.That(motor.PotholeHits, Is.GreaterThanOrEqualTo(1), "The authored route must encounter a pothole; floor contact must not suppress it.");
@@ -138,6 +161,25 @@ namespace CityRace.Tests
             course.Recover();
             Assert.That(motor.Speed, Is.LessThan(.01f));
             Assert.That(course.Progress.Recoveries, Is.EqualTo(1));
+        }
+
+        // Scripted rider: follows the authored corner points itself (independent of the game's gate radius,
+        // which is deliberately generous) and stops at an offset inside the finish square.
+        private static IEnumerator DriveRoute(PracticeCourse course, BikeMotor motor, Vector3 finishOffset)
+        {
+            var points = course.Checkpoints;
+            var aim = 1;
+            for (var i = 0; i < 5000 && !course.Progress.Finished; i++)
+            {
+                var last = aim == points.Count - 1;
+                var target = last ? points[aim] + finishOffset : points[aim];
+                var delta = target - motor.transform.position;
+                var direction = new Vector2(delta.x, delta.z);
+                if (!last && direction.magnitude < 2f) { aim++; continue; }
+                var throttle = !last ? .55f : direction.magnitude < .25f ? 0f : direction.magnitude < 3f ? .2f : .45f;
+                motor.SetCommand(direction.normalized * throttle);
+                yield return new WaitForFixedUpdate();
+            }
         }
     }
 }

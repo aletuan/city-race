@@ -14,6 +14,7 @@ namespace CityRace.Gameplay.Riding
         public float RecoveryFraction => Mathf.Clamp01(_holdSeconds / 1.2f);
         public bool IsFinalApproach => _progress.NextCheckpoint == _checkpoints.Length - 1;
         public Vector3 NextPoint => _checkpoints[_progress.NextCheckpoint];
+        public System.Collections.Generic.IReadOnlyList<Vector3> Checkpoints => _checkpoints;
 
         public void Configure(BikeMotor motor, DragRideInput input, Vector3[] checkpoints)
         {
@@ -37,9 +38,9 @@ namespace CityRace.Gameplay.Riding
             if (_progress == null || _progress.Finished) { return; }
             var delta = _motor.transform.position - NextPoint;
             delta.y = 0f;
-            // Narrow finish zone requires a deliberate stop at the company gate.
-            var radius = _progress.NextCheckpoint == _checkpoints.Length - 1 ? 1.8f : 2.7f;
-            _progress.Tick(Time.deltaTime, delta.sqrMagnitude <= radius * radius, _motor.Speed);
+            // Intermediate gates tolerate corner-hugging; the finish matches the painted square.
+            var inside = IsFinalApproach ? PracticeZones.InsideFinish(delta.x, delta.z) : PracticeZones.ReachesGate(delta.x, delta.z);
+            _progress.Tick(Time.deltaTime, inside, _motor.Speed);
             if (_progress.Finished)
             {
                 _input.Cancel();

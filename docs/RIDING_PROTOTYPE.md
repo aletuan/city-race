@@ -1,4 +1,33 @@
-# Riding prototype — M1, potholes (0.0.4)
+# Riding prototype — M1, kerb and finish fixes (0.0.5)
+
+6 October 2026
+
+## 0.0.4 on-device field report
+
+First hands-on session by the project owner on iPhone (single tester, not the CR-015 group playtest). Only the two defects below were reported; the remaining acceptance steps (A1–A13 protocol) have no recorded result yet.
+
+1. Stopped on the yellow finish square, but the timer kept running.
+2. After touching a kerb, the bike could no longer be controlled.
+
+## Root causes
+
+1. Intermediate gates required the bike centre within 2.7 m of the corner point. Roads are 6 m wide, so hugging the inside of a corner (3.5–4.2 m from the centre) silently missed the gate; the finish then never counted because progress was still waiting for that gate. The finish itself used a 1.8 m circle, smaller than the painted 3 × 3 m square, so corners of the square were rejected. The scripted route driver always aims at gate centres, which is why tests did not catch it.
+2. Steering authority scaled with measured speed (`speed / 2`). Driving into a kerb collapses measured speed to ~0, so turning dropped to ~0 and the bike kept pushing into the wall; only the hidden hold-still recovery escaped.
+
+## Changes in 0.0.5
+
+- `PracticeZones` (plain C#): intermediate gate radius 4.5 m (kerbs make shortcuts impossible); finish is an axis-aligned square with 1.85 m half extent (painted 1.5 m + bike allowance).
+- `BikeMotor`: records side contacts (`TouchingWall`). While touching a kerb, steering keeps at least 50% authority and the into-wall velocity component is removed, so the bike scrapes along and can turn away. On open road, steering still needs forward motion (no pivot in place).
+- Tests added: zone geometry, stopping in a corner of the finish square freezes the clock, escaping a head-on kerb without passing through it, and no pivoting at rest on open road. The scripted rider now follows corner points with its own threshold, independent of the generous game gates.
+
+## 0.0.5 validation
+
+Code changes and tests were written on 6 October 2026 **without running Unity** (no macOS shell available to the agent). PlayMode results, iOS build/install and on-device confirmation of both fixes are pending.
+
+---
+
+## Pothole increment (0.0.4)
+
 
 5 October 2026
 

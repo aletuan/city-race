@@ -94,6 +94,36 @@ namespace CityRace.Tests
         }
 
         [UnityTest]
+        public IEnumerator PinnedAgainstKerbCanSteerAwayWithoutPassingThrough()
+        {
+            _wall = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            _wall.transform.position = new Vector3(0, 0, 3);
+            _wall.transform.localScale = new Vector3(8, 2, .5f);
+            _motor.SetCommand(Vector2.up);
+            for (var i = 0; i < 150; i++) { yield return new WaitForFixedUpdate(); }
+            Assert.That(_motor.TouchingWall, Is.True, "Head-on kerb contact must be detected.");
+            var pinned = _body.position;
+            // Field report 0.0.4: after touching the kerb the bike could no longer be controlled.
+            _motor.SetCommand(new Vector2(1f, -.2f));
+            for (var i = 0; i < 100; i++) { yield return new WaitForFixedUpdate(); }
+            Assert.That(Quaternion.Angle(Quaternion.identity, _body.rotation), Is.GreaterThan(60f), "Rider must be able to turn away from the kerb.");
+            Assert.That(_body.position.x - pinned.x, Is.GreaterThan(1f), "Bike must leave the pinned position.");
+            Assert.That(_body.position.z, Is.LessThan(2.75f), "Escaping must not pass through the kerb face.");
+            _motor.SetCommand(Vector2.zero);
+            for (var i = 0; i < 50; i++) { yield return new WaitForFixedUpdate(); }
+            Assert.That(_motor.Speed, Is.LessThan(.05f));
+        }
+
+        [UnityTest]
+        public IEnumerator SteeringFromRestAwayFromKerbsStillNeedsMotion()
+        {
+            _motor.SetCommand(new Vector2(.05f, 0f));
+            for (var i = 0; i < 25; i++) { yield return new WaitForFixedUpdate(); }
+            Assert.That(_motor.TouchingWall, Is.False);
+            Assert.That(Quaternion.Angle(Quaternion.identity, _body.rotation), Is.LessThan(10f), "Open road must not allow pivoting in place.");
+        }
+
+        [UnityTest]
         public IEnumerator MouseDragReleaseAndCancelRequireNewPress()
         {
             _mouse = InputSystem.AddDevice<Mouse>();

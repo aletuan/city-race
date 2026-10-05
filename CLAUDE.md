@@ -10,6 +10,7 @@ Reviewed 6 October 2026 (Asia/Ho_Chi_Minh). This file captures the conversation 
 - Remote: `https://github.com/aletuan/city-race.git`; branch: `main`.
 - Gameplay baseline: **`908668f`**, application version **0.0.4**. Working tree was clean and local HEAD matched the cached `origin/main` before this handoff was added. Recheck Git state before editing.
 - Active build scene: [Practice.unity](Assets/CityRace/Content/Scenes/Practice.unity). Smoke and Riding are historical scenes, not the current build target.
+- **0.0.5 (6 Oct):** first device session found two defects (finish not registering, kerb lock-up); fixes and tests are in the working tree/commit but **not yet run in Unity or built**. See docs/RIDING_PROTOTYPE.md.
 - **M0 is complete. M1 is in progress.** Potholes exist; the bus is the next feature. Do not mark M1 complete based on tests/builds alone.
 - Last device blocker: 0.0.4 installed successfully, but launch was explicitly refused because the iPhone was locked. No later unlock or visual acceptance is recorded. Recheck; do not assume it is still locked today.
 
@@ -57,9 +58,9 @@ All values below are prototype settings, not validated final handling.
 | --- | --- |
 | Input | Start a relative drag in the lower 65% of the safe area. Radius: 18% of the shorter safe-area dimension; dead zone: 12%. Direction sets desired heading; distance sets throttle. |
 | Cancellation | Release brakes. Focus loss, pause, resize and disable cancel input. Lifting the controlling finger while another remains does not transfer throttle; release all fingers to rearm. |
-| Motor | Rigidbody constrained to the road plane; fixed simulation 50 Hz. Max 8 m/s, acceleration 5 m/s², braking 16 m/s², turn cap 165°/s reduced at low speed. Forward arcs, no reverse button or in-place turning. |
+| Motor | Rigidbody constrained to the road plane; fixed simulation 50 Hz. Max 8 m/s, acceleration 5 m/s², braking 16 m/s², turn cap 165°/s reduced at low speed. Forward arcs, no reverse button or in-place turning on open road. Against a kerb (0.0.5): minimum 50% steering and into-wall velocity removed, so the bike scrapes along and can turn away. |
 | Corners | Target throttle progressively decreases for heading errors between 20° and 100°, down to 40%. |
-| Course | About 107 m of centerline, four corners, a narrow section and ordered checkpoints. Follow yellow guides; stop in the yellow company square below 0.4 m/s for 0.7 s. |
+| Course | About 107 m of centerline, four corners, a narrow section and ordered checkpoints (gate radius 4.5 m since 0.0.5). Follow yellow guides; stop inside the painted 3 × 3 m company square (1.85 m half extent) below 0.4 m/s for 0.7 s. |
 | Recovery | Release, then hold still for 1.2 s while stopped. Return to an earlier passed checkpoint, add 2 s, zero motion and require release before driving again. Route projection limits forward shortcuts during backtracking; start is the lower bound. |
 | Replay | Restart button resets the run without reopening the app. Finish disables the motor until Restart. |
 | Camera | Fixed north orientation, 58° overhead, orthographic size 12; follows in LateUpdate and snaps after large resets. |
