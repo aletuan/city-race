@@ -11,7 +11,7 @@ P0 blocks the current milestone; P1 follows the foundation. IDs and dependencies
 | CR-003 | P0 | Initialise from the installed URP template; commit actual settings, package lock and metadata; compile cleanly | CR-002 | Done; generated settings/lock/metadata, batch compile passed |
 | CR-004 | P0 | Generate camera, road, buildings and bike marker scene; inspect URP rendering | CR-003 | Done; Smoke observed in Editor Play Mode |
 | CR-005 | P0 | Export Xcode project, sign with chosen team, install/launch on physical iPhone; observe scene | CR-004, valid Apple signing | Done; signed build, install, launch and iPhone screenshot verified |
-| CR-006 | P1 | Install Web support, build and serve over HTTPS; inspect browser scene and loading | CR-004, storage | Blocked: build + HTTPS headers passed; browser policy verification unavailable |
+| CR-006 | P1 | Install Web support, build and serve over HTTPS; inspect browser scene and loading | CR-004, storage | Done; HTTPS loading/render confirmed by user screenshot; console unverified |
 | CR-010 | P0 | Implement normalized pointer input with release/focus-loss braking; mouse and touch behave consistently | M0 | Todo |
 | CR-011 | P0 | Implement constrained bike motor with acceleration, turning and braking; compare frame rates | CR-010 | Todo |
 | CR-012 | P0 | Add readable pothole/bus/obstacle reactions; no unexplained forced failure | CR-011 | Todo |

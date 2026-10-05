@@ -11,7 +11,7 @@ P0 chặn mốc hiện tại; P1 đi sau nền tảng. Hai ngôn ngữ dùng chu
 | CR-003 | P0 | Khởi tạo từ URP template đã cài; commit settings, package lock, metadata thật; compile sạch | CR-002 | Xong; đã sinh settings/lock/metadata, batch compile đạt |
 | CR-004 | P0 | Sinh cảnh camera, đường, nhà, mô hình xe; quan sát URP render | CR-003 | Xong; đã quan sát Smoke trong Editor Play Mode |
 | CR-005 | P0 | Xuất Xcode project, ký với team đã chọn, cài/chạy iPhone thật; quan sát cảnh | CR-004, signing Apple hợp lệ | Xong; đã ký, cài, chạy và kiểm tra ảnh iPhone |
-| CR-006 | P1 | Cài Web support, build và phục vụ qua HTTPS; kiểm tra cảnh/tải trên trình duyệt | CR-004, dung lượng | Bị chặn: build + header HTTPS đạt; không xác minh được chính sách trình duyệt |
+| CR-006 | P1 | Cài Web support, build và phục vụ qua HTTPS; kiểm tra cảnh/tải trên trình duyệt | CR-004, dung lượng | Xong; ảnh người dùng xác nhận tải/render HTTPS; chưa kiểm tra console |
 | CR-010 | P0 | Input pointer chuẩn hóa, phanh khi nhả/mất focus; chuột/cảm ứng nhất quán | M0 | Chưa làm |
 | CR-011 | P0 | Bộ điều khiển xe có tăng tốc/rẽ/phanh; so sánh frame rate | CR-010 | Chưa làm |
 | CR-012 | P0 | Phản ứng ổ gà/xe buýt/chướng ngại dễ hiểu; không ép thất bại vô cớ | CR-011 | Chưa làm |

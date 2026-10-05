@@ -12,7 +12,7 @@ A multiplayer motorbike racing game set in Sài Gòn rush-hour traffic, with one
 - Setup and M0 validation: [Tiếng Việt](docs/SETUP.vi.md) · [English](docs/SETUP.en.md)
 - [Agent entry point](AGENTS.md)
 
-Current stage: M0 bootstrap. The Unity 6000.3.25f1 URP project and static Smoke scene are initialized. Editor compilation and Play Mode rendering were verified on 5 October 2026. Signed iPhone build/install/launch and portrait rendering are verified; Web validation and runtime benchmarks are still pending. Follow Setup for commands and current evidence; keep both language editions aligned.
+Current stage: M0 smoke milestone complete; M1 riding prototype next. The Unity 6000.3.25f1 URP project and static Smoke scene are initialized. Editor compilation and Play Mode rendering were verified on 5 October 2026. Signed iPhone build/install/launch and portrait rendering are verified; HTTPS Web loading/rendering is confirmed by a user-provided Chrome screenshot. Console checks, mobile Web and runtime benchmarks remain unverified. Follow Setup for commands and current evidence; keep both language editions aligned.
 
 ## Starting stack
 

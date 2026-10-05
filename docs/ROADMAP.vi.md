@@ -6,7 +6,7 @@ Theo [GDD](GDD.vi.md), [tech stack](TECH_STACK.vi.md) và [quy ước kỹ thu�
 
 | Mốc | Đầu ra | Bằng chứng hoàn thành | Trạng thái |
 | --- | --- | --- | --- |
-| M0 Môi trường và khởi tạo | Unity project khóa phiên bản, cảnh URP tối thiểu, quy trình build tái lập | Cảnh chạy trên iPhone thật; Web smoke test đã host; ghi editor/package | Đang làm; đã kiểm tra Editor và bản ký chạy iPhone; còn Web smoke |
+| M0 Môi trường và khởi tạo | Unity project khóa phiên bản, cảnh URP tối thiểu, quy trình build tái lập | Cảnh chạy trên iPhone thật; Web smoke test đã host; ghi editor/package | Xong — 05/10; đã kiểm tra iPhone và ảnh Web |
 | M1 Prototype lái | Lái một ngón tay, đường, ổ gà, xe buýt, chướng ngại hình khối | Người mới xuất phát/rẽ/dừng được; phản hồi muốn chơi lại; hiệu năng thiết bị; Android smoke build | Dự kiến |
 | M2 Prototype multiplayer | Hai nhà, hai người, chung giao thông/đích; sau đó bốn người | Native/Web chung phòng, lái phản hồi tốt, kết quả thống nhất, mất kết nối, số byte Relay mỗi giờ-người | Dự kiến |
 | M3 Một màn nhỏ hoàn chỉnh | Bốn nhà, đi làm sáng, sự kiện trong phạm vi, cá nhân hóa đơn giản, âm thanh, kết quả/chơi lại | Nhóm ngoài hoàn thành luồng và tự muốn chơi lại; hiệu năng với tải đại diện | Dự kiến |
@@ -16,8 +16,8 @@ Theo [GDD](GDD.vi.md), [tech stack](TECH_STACK.vi.md) và [quy ước kỹ thu�
 
 ## Trình tự hiện tại
 
-1. Hoàn tất điều kiện môi trường M0 và chạy smoke scene trên iPhone thật.
-2. Kiểm chứng Web build và tạo package lock.
+1. M0 hoàn tất: project khóa phiên bản, bản ký chạy iPhone và bằng chứng hình ảnh Web HTTPS.
+2. Bắt đầu M1 bằng input chuẩn hóa (CR-010) và điều khiển xe (CR-011).
 3. Chỉ triển khai điều khiển/cảm giác lái M1 trong [backlog](BACKLOG.vi.md).
 4. Playtest nhỏ; tạo biên bản có ngày khi thực sự diễn ra.
 5. Chỉ vào M2 khi cảm giác lái đạt tiêu chí GDD.
