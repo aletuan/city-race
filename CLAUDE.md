@@ -10,7 +10,7 @@ Reviewed 6 October 2026 (Asia/Ho_Chi_Minh). This file captures the conversation 
 - Remote: `https://github.com/aletuan/city-race.git`; branch: `main`.
 - Gameplay baseline: **`908668f`**, application version **0.0.4**. Working tree was clean and local HEAD matched the cached `origin/main` before this handoff was added. Recheck Git state before editing.
 - Active build scene: [Practice.unity](Assets/CityRace/Content/Scenes/Practice.unity). Smoke and Riding are historical scenes, not the current build target.
-- **0.0.5 (6 Oct):** first device session found two defects (finish not registering, kerb lock-up); fixes and tests are in the working tree/commit but **not yet run in Unity or built**. See docs/RIDING_PROTOTYPE.md.
+- **0.0.5 (6 Oct):** first device session found two defects (finish not registering, kerb lock-up); fixes committed; **20/20 PlayMode tests passed** and iOS export succeeded; signed build/install and device confirmation pending. See docs/RIDING_PROTOTYPE.md.
 - **M0 is complete. M1 is in progress.** Potholes exist; the bus is the next feature. Do not mark M1 complete based on tests/builds alone.
 - Last device blocker: 0.0.4 installed successfully, but launch was explicitly refused because the iPhone was locked. No later unlock or visual acceptance is recorded. Recheck; do not assume it is still locked today.
 

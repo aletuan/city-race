@@ -22,7 +22,7 @@ First hands-on session by the project owner on iPhone (single tester, not the CR
 
 ## 0.0.5 validation
 
-Code changes and tests were written on 6 October 2026 **without running Unity** (no macOS shell available to the agent). PlayMode results, iOS build/install and on-device confirmation of both fixes are pending.
+On 6 October 2026 the owner ran the PlayMode suite on Unity 6000.3.25f1: **20/20 passed** (16 existing + 4 new, including `StoppingInCornerOfFinishSquareStopsTheClock` and `PinnedAgainstKerbCanSteerAwayWithoutPassingThrough`). Local, ignored logs: `Logs/kerb-finish-tests.xml`, `Logs/kerb-finish-tests.log`. iOS export succeeded (`Builds/iOS`, version 0.0.5). Signed Xcode build, installation and on-device confirmation of both fixes are pending.
 
 ---
 
