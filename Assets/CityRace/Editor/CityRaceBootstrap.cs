@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
@@ -128,14 +129,15 @@ namespace CityRace.Editor
                 throw new InvalidOperationException("Pass the matching -buildTarget to Unity before executing this method.");
             }
 
-            if (AssetDatabase.LoadAssetAtPath<SceneAsset>(ScenePath) == null)
+            var scenes = EditorBuildSettings.scenes.Where(scene => scene.enabled).Select(scene => scene.path).ToArray();
+            if (scenes.Length == 0 || scenes.Any(path => AssetDatabase.LoadAssetAtPath<SceneAsset>(path) == null))
             {
-                throw new InvalidOperationException("Create and inspect the smoke scene before building.");
+                throw new InvalidOperationException("Enable at least one valid scene in Build Settings before building.");
             }
 
             var report = BuildPipeline.BuildPlayer(new BuildPlayerOptions
             {
-                scenes = new[] { ScenePath },
+                scenes = scenes,
                 locationPathName = output,
                 target = target,
                 options = BuildOptions.Development

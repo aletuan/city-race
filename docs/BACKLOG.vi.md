@@ -12,8 +12,8 @@ P0 chặn mốc hiện tại; P1 đi sau nền tảng. Hai ngôn ngữ dùng chu
 | CR-004 | P0 | Sinh cảnh camera, đường, nhà, mô hình xe; quan sát URP render | CR-003 | Xong; đã quan sát Smoke trong Editor Play Mode |
 | CR-005 | P0 | Xuất Xcode project, ký với team đã chọn, cài/chạy iPhone thật; quan sát cảnh | CR-004, signing Apple hợp lệ | Xong; đã ký, cài, chạy và kiểm tra ảnh iPhone |
 | CR-006 | P1 | Cài Web support, build và phục vụ qua HTTPS; kiểm tra cảnh/tải trên trình duyệt | CR-004, dung lượng | Xong; ảnh người dùng xác nhận tải/render HTTPS; chưa kiểm tra console |
-| CR-010 | P0 | Input pointer chuẩn hóa, phanh khi nhả/mất focus; chuột/cảm ứng nhất quán | M0 | Chưa làm |
-| CR-011 | P0 | Bộ điều khiển xe có tăng tốc/rẽ/phanh; so sánh frame rate | CR-010 | Chưa làm |
+| CR-010 | P0 | Input pointer chuẩn hóa, phanh khi nhả/mất focus; chuột/cảm ứng nhất quán | M0 | Đang làm; đã có triển khai + 6 test PlayMode đạt; chờ cảm giác lái/kiểm tra fps trên máy thật |
+| CR-011 | P0 | Bộ điều khiển xe có tăng tốc/rẽ/phanh; so sánh frame rate | CR-010 | Đang làm; đã có triển khai + 6 test PlayMode đạt; chờ cảm giác lái/kiểm tra fps trên máy thật |
 | CR-012 | P0 | Phản ứng ổ gà/xe buýt/chướng ngại dễ hiểu; không ép thất bại vô cớ | CR-011 | Chưa làm |
 | CR-013 | P1 | Chỉnh camera, safe area, tầm nhìn; ngón tay không che chướng ngại quan trọng | CR-011 | Chưa làm |
 | CR-014 | P1 | Cài module Android, chạy trên thiết bị thật; ghi lỗi tương thích | CR-011, thiết bị và dung lượng | Chưa làm |
@@ -24,9 +24,11 @@ P0 chặn mốc hiện tại; P1 đi sau nền tảng. Hai ngôn ngữ dùng chu
 ## Trở ngại hiện tại
 
 - Đã giải quyết trở ngại dung lượng: ngày 05/10 internal còn khoảng 21 GiB sau cài đặt, T7 khoảng 870 GiB. Tiếp tục kiểm tra dung lượng tạm khi cài.
-- Đã cài Hub 3.22.2 và Editor 6000.3.25f1 ARM64 cùng iOS/Web. Đã xác minh license Personal và executable Editor. CR-003/004 đạt với URP template kèm bộ cài; tiếp theo là signing/xuất iOS và chạy thiết bị.
-- Có Xcode 26.6. iPhone 15 Pro Max đã từng pair hiện báo unavailable; kết nối và kiểm tra lại OS/Developer Mode trước khi chạy thử.
+- Đã cài Hub 3.22.2 và Editor 6000.3.25f1 ARM64 cùng iOS/Web. Đã xác minh license Personal và executable Editor. CR-003–006 đã đạt; đang làm phần lái M1.
+- Có Xcode 26.6. Đã xác minh iPhone 15 Pro Max; giữ kết nối và mở khóa cho các lần chạy tiếp theo.
 - Đã giải quyết signing sau đăng nhập lại Xcode: automatic signing và chạy iPhone thật đạt. Không sửa credential City Crew.
 - Chưa có Git LFS; cài/cấu hình trước khi thêm asset nguồn nhị phân lớn. Công việc hiện tại chỉ có text.
 
-Chi tiết môi trường và bước tiếp tục trong [Setup](SETUP.vi.md). Không đánh dấu CR-003–005 xong trước khi công cụ chạy thành công thật.
+Chi tiết môi trường và bước tiếp tục trong [Setup](SETUP.vi.md). Chưa nghiệm thu M1 trước khi ghi nhận kiểm tra thủ công trên thiết bị.
+
+Phần lái M1: [triển khai, điều khiển và kiểm chứng](RIDING_PROTOTYPE.vi.md).

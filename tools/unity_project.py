@@ -97,6 +97,7 @@ def execute(editor, action):
         raise RuntimeError("No matching initialised project. Run init first.")
     methods = {
         "scene": ("CityRace.Editor.CityRaceBootstrap.CreateSmokeScene", None),
+        "riding": ("CityRace.Editor.RidingBootstrap.CreateScene", None),
         "export-ios": ("CityRace.Editor.CityRaceBootstrap.ExportIos", "iOS"),
         "build-web": ("CityRace.Editor.CityRaceBootstrap.BuildWeb", "WebGL"),
     }
@@ -109,13 +110,15 @@ def execute(editor, action):
     run_unity(editor, *args, "-executeMethod", method)
     if action == "scene" and not (ROOT / "Assets/CityRace/Content/Scenes/Smoke.unity").is_file():
         raise RuntimeError("Unity exited without generating Smoke.unity; inspect the log.")
+    if action == "riding" and not (ROOT / "Assets/CityRace/Content/Scenes/Riding.unity").is_file():
+        raise RuntimeError("Unity exited without generating Riding.unity; inspect the log.")
     if not (ROOT / "Packages/packages-lock.json").is_file():
         raise RuntimeError("Package resolution has not produced a lock file; inspect the log.")
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("action", choices=["preflight", "init", "scene", "export-ios", "build-web"])
+    parser.add_argument("action", choices=["preflight", "init", "scene", "riding", "export-ios", "build-web"])
     parser.add_argument("--editor", type=Path, default=DEFAULT_EDITOR)
     parser.add_argument("--template", type=Path, help="Official URP blank .tgz; optional when found in the editor")
     args = parser.parse_args()
