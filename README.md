@@ -12,11 +12,11 @@ A multiplayer motorbike racing game set in Sài Gòn rush-hour traffic, with one
 - Setup and M0 validation: [Tiếng Việt](docs/SETUP.vi.md) · [English](docs/SETUP.en.md)
 - [Agent entry point](AGENTS.md)
 
-Current stage: design and technical planning. This repository contains documentation and unvalidated bootstrap tooling; no generated Unity project, installed Unity packages, game builds, or runtime benchmarks exist yet. M0 establishes the first verified iPhone and Web smoke builds. The technical documents define the implementation baseline and validation gates. Keep both language editions aligned.
+Current stage: M0 bootstrap. The Unity 6000.3.25f1 URP project and static Smoke scene are initialized. Editor compilation and Play Mode rendering were verified on 5 October 2026. iPhone/Web builds, signing and runtime benchmarks are still pending. Follow Setup for commands and current evidence; keep both language editions aligned.
 
 ## Starting stack
 
-Unity 6.3 LTS, C#, URP, Input System, and uGUI/TextMeshPro. Initial networking candidate: Netcode for GameObjects, Unity Transport, Multiplayer Services Sessions/Relay, and anonymous authentication. Exact versions are pinned when the Unity project is created. Multiplayer responsiveness and native/Web compatibility must be validated before expanding content.
+Unity 6.3 LTS, C#, URP, Input System, and uGUI/TextMeshPro. Initial networking candidate: Netcode for GameObjects, Unity Transport, Multiplayer Services Sessions/Relay, and anonymous authentication. Editor and resolved packages are pinned in `.unity-version`, ProjectSettings and Packages. Multiplayer responsiveness and native/Web compatibility must be validated before expanding content.
 
 ## Repository
 

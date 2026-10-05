@@ -22,7 +22,7 @@ Chỉ hoàn thành M0 khi project URP đã khóa phiên bản compile thành cô
 | iPhone | iPhone 15 Pro Max đã từng pair; hiện unavailable trong `devicectl`; cần kết nối lại trước khi thử |
 | Signing | Login Keychain có một Apple Development identity báo hết hạn (CSSMERR_TP_CERT_EXPIRED); 0 identity hợp lệ |
 | Git LFS | Chưa cài; cần trước khi thêm asset nguồn nhị phân lớn, chưa cần cho các file text hiện tại |
-| Project | Chưa có Assets, Packages hoặc ProjectSettings do Unity sinh |
+| Project | Đã sinh Assets, Packages, ProjectSettings; đã kiểm tra Smoke trong Editor Play Mode |
 
 Không commit định danh thiết bị, thông tin tài khoản, certificate hoặc provisioning profile. Người dùng đã cho phép cài phần mềm cần thiết cho M0. Đăng nhập, điều kiện license và signing Apple vẫn cần thông tin/lựa chọn của chính người dùng; không mua dịch vụ hoặc đoán signing team.
 
@@ -34,7 +34,7 @@ Không commit định danh thiết bị, thông tin tài khoản, certificate ho
 4. Giữ bộ cài Unity/Xcode và cache toàn cục trên internal. Project, Library riêng của project và Builds nằm trên T7. Kiểm tra cả hai ổ khi cài; download và giải nén cần dung lượng tạm ngoài dung lượng cài xong. Không chuyển Docker, simulator, DerivedData hoặc cache toàn cục.
 5. Giữ T7 kết nối khi Unity/IDE/build đang sử dụng. Đóng ứng dụng trước khi eject. Symlink không tạo bản offline hoặc backup tự động.
 
-## Lệnh khởi tạo — đã chuẩn bị, chưa kiểm chứng bằng Unity
+## Lệnh khởi tạo — đã kiểm chứng init và scene
 
 Chạy từ gốc repository. `preflight` chỉ đọc và trả mã khác 0 nếu thiếu editor hoặc ổ chứa project còn dưới 10 GiB. Đây không phải phép kiểm tra đầy đủ dung lượng cài đặt hay signing.
 
@@ -62,7 +62,7 @@ Với Web, phục vụ build qua HTTPS cùng header nén đúng; kiểm tra tả
 
 ## Kiểm chứng hiện tại
 
-Cú pháp Python, CLI help, chặn khi thiếu editor, link Markdown local và whitespace được kiểm tra trong bước 1. Compile Unity, tương thích template, cảnh sinh ra, xuất iOS, signing, chạy thiết bị và build Web chưa được kiểm chứng cho tới khi thực hiện từng task. Cập nhật mục này và backlog bằng bằng chứng thực tế, không ghi kết quả dự kiến như đã hoàn thành.
+Cú pháp Python, CLI help, chặn khi thiếu editor, link Markdown local và whitespace được kiểm tra trong bước 1. Khởi tạo Unity, tương thích template, compile và sinh cảnh hiện đã đạt. Xuất iOS, signing, chạy thiết bị và build Web chưa được kiểm chứng. Cập nhật mục này và backlog bằng bằng chứng thực tế, không ghi kết quả dự kiến như đã hoàn thành.
 
 ## Kiểm tra thêm signing — 05/10/2026
 
@@ -72,4 +72,14 @@ Project City Crew hiện dùng Expo/EAS, có cấu hình submit production và R
 
 Đã cài Unity Hub 3.22.2 qua Homebrew. Hub CLI hoàn tất cài 6000.3.25f1 (revision e1dba0a9aba4), ARM64, cùng `ios` và `webgl`, báo tất cả thành công. Executable Editor trả về `6000.3.25f1`, exit code 0 sau màn hình điều khoản lần đầu. Hub hiển thị license Personal đã kích hoạt. Preflight hiện đạt. Module nằm ở `PlaybackEngines/iOSSupport` và `PlaybackEngines/WebGLSupport` tại gốc bộ cài, cạnh `Unity.app`.
 
-Bộ cài editor này không kèm URP blank template chính thức. Lấy template qua Hub và dùng `--template` ở CR-003. Chưa sinh project, chưa compile project Unity hoặc build cho thiết bị/trình duyệt. Git LFS vẫn chưa có; chưa thêm asset nguồn nhị phân lớn.
+Kiểm tra tiếp đã tìm thấy URP template kèm bộ cài với tên archive khác; xem bằng chứng khởi tạo bên dưới. Chưa build cho thiết bị/trình duyệt. Git LFS vẫn chưa có; chưa thêm asset nguồn nhị phân lớn.
+
+## Bằng chứng khởi tạo — 05/10/2026
+
+CR-003 và CR-004 đạt trên Mac Apple Silicon này với Unity 6000.3.25f1 (Metal). Archive kèm bộ cài `com.unity.template.3d-cross-platform-17.0.14.tgz` có metadata nhận diện `com.unity.template.urp-blank` phiên bản 17.0.14. Công cụ hiện kiểm tra metadata package thay vì đoán tên file. Không cần tải template hoặc tự viết package lock.
+
+`python3 tools/unity_project.py init` hoàn tất với exit code 0. Unity sinh settings, metadata và lock đã resolve: URP 17.3.0, Input System 1.20.0, uGUI 2.0.0, Test Framework 1.6.0. Giữ các package khác của template; chưa thêm package gameplay multiplayer. Unity tự chuyển phiên bản package của template khi khởi tạo.
+
+`Smoke.unity` có đường, vỉa hè, nhà, vạch kẻ, xe/người dạng khối tĩnh, camera trực giao và ánh sáng. Đây là cảnh được bật trong build. iOS dùng ID tạm `com.aletuan.cityrace.dev`, IL2CPP, màn hình dọc và target iPhone. Mã script nguồn và bản editor trong Assets trùng nhau. Lần mở giao diện đầu, Unity nâng cấp material template. Đã quan sát Play Mode: hình khối có màu hiển thị, không có material hồng do thiếu shader. Ảnh nằm ở file local được ignore `Logs/smoke-editor-play.png`. Kiểm tra này dùng Free Aspect trong Editor, chưa xác nhận bố cục dọc iPhone hoặc benchmark hiệu năng.
+
+Log có lỗi kết nối dịch vụ Unity và cảnh báo access token lúc mở; không chặn khởi tạo hoặc Play Mode. Không quan sát thấy lỗi compile C# hoặc script exception. Không suy ra dịch vụ mạng đã sẵn sàng từ lần thử này. Tiếp theo: đóng Editor trước khi xuất batch, cấu hình Apple team hiện có và kiểm tra trên iPhone đã kết nối.

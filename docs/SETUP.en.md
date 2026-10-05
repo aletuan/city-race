@@ -22,7 +22,7 @@ M0 exits only when the pinned URP project compiles, the smoke scene is visually 
 | iPhone | Previously paired iPhone 15 Pro Max; currently unavailable in `devicectl`; reconnect before testing |
 | Signing | Login Keychain has one Apple Development identity reported expired (CSSMERR_TP_CERT_EXPIRED); zero valid identities |
 | Git LFS | Not installed; needed before introducing large binary source assets, not for current text files |
-| Project | No generated Assets, Packages or ProjectSettings yet |
+| Project | Assets, Packages and ProjectSettings generated; Smoke verified in Editor Play Mode |
 
 Do not commit device identifiers, account details, certificates or provisioning profiles. The user has authorised necessary M0 software installation. Account login, license eligibility and Apple signing still require the user's own credentials/choices; do not purchase services or guess a team.
 
@@ -34,7 +34,7 @@ Do not commit device identifiers, account details, certificates or provisioning 
 4. Keep Unity/Xcode installations and global caches internal. Keep the project, project-local Library and Builds on T7. Check both disks during installation; downloads and extraction need temporary space beyond installed size. Do not relocate Docker, simulators, DerivedData or global caches.
 5. Keep T7 connected while Unity/IDEs/builds use it. Close them before ejecting. A symlink does not provide an offline copy or automatic backup.
 
-## Bootstrap commands — prepared, not yet Unity-validated
+## Bootstrap commands — init and scene verified
 
 Run from the repository root. `preflight` is read-only and returns nonzero if the editor is absent or project-volume free space is below 10 GiB. It is not a full installation-size or signing check.
 
@@ -62,7 +62,7 @@ For Web, serve the generated build through HTTPS with correct compression header
 
 ## Current verification
 
-Python syntax, CLI help, missing-editor guard, local Markdown links and whitespace are checked during step 1. Unity compilation, template compatibility, generated scene, iOS export, signing, device execution and Web build remain unverified until their respective tasks run. Update this section and the backlog with real evidence, not planned outcomes.
+Python syntax, CLI help, missing-editor guard, local Markdown links and whitespace are checked during step 1. Unity initialization, template compatibility, compilation and scene generation now pass. iOS export, signing, device execution and Web build remain unverified. Update this section and the backlog with real evidence, not planned outcomes.
 
 ## Signing follow-up — 5 October 2026
 
@@ -72,4 +72,14 @@ The existing City Crew project uses Expo/EAS, has a production submission config
 
 Unity Hub 3.22.2 installed via Homebrew. Hub CLI completed installation of 6000.3.25f1 (revision e1dba0a9aba4), ARM64, with `ios` and `webgl`, reporting all tasks successful. The Editor executable returned `6000.3.25f1` with exit code 0 after the first-run terms screen. Hub displays an active Personal license. Preflight now passes. Modules are in the installation root’s `PlaybackEngines/iOSSupport` and `PlaybackEngines/WebGLSupport`, alongside `Unity.app`.
 
-The official URP blank template is not bundled in this editor installation. Obtain it through Hub and use `--template` during CR-003. No project has been generated and no Unity project compile or device/browser build has run. Git LFS remains absent; do not add large binary source assets yet.
+Follow-up inspection found the bundled URP template under a different archive filename; see the bootstrap evidence below. Device/browser builds have not run. Git LFS remains absent; do not add large binary source assets yet.
+
+## Bootstrap evidence — 5 October 2026
+
+CR-003 and CR-004 passed on this Apple Silicon Mac with Unity 6000.3.25f1 (Metal). The bundled archive `com.unity.template.3d-cross-platform-17.0.14.tgz` identifies itself internally as `com.unity.template.urp-blank` version 17.0.14. Tooling now checks package metadata rather than assuming a filename. No template download or manual package-lock construction was needed.
+
+`python3 tools/unity_project.py init` completed with exit code 0. Unity generated settings, metadata and a resolved lock: URP 17.3.0, Input System 1.20.0, uGUI 2.0.0 and Test Framework 1.6.0. The template's other packages are retained; multiplayer gameplay packages have not been added. Initialization migrates template package versions through Unity itself.
+
+`Smoke.unity` contains the road, sidewalks, buildings, markings, static bike/rider, orthographic camera and light. It is the enabled build scene. iOS uses provisional ID `com.aletuan.cityrace.dev`, IL2CPP, portrait and iPhone target. The script source and Assets editor copy match. Unity's first interactive launch upgraded template materials. Play Mode was visually inspected: colored geometry rendered, no missing-shader pink materials. Screenshot: ignored local `Logs/smoke-editor-play.png`. This is an Editor check in Free Aspect, not iPhone portrait validation or a performance benchmark.
+
+Logs contain Unity service connectivity errors and a startup access-token warning; these did not prevent initialization or Play Mode. No C# compilation errors or script exceptions were observed. Do not infer network-service readiness from this test. Next: close the Editor before batch export, configure the existing Apple team, and validate on a connected iPhone.

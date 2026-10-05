@@ -131,4 +131,4 @@ Before delivery:
 - Update English and Vietnamese docs when architecture or gameplay changes.
 - Report unrun checks honestly. Do not fabricate commands, CI results or device access.
 
-Until the Unity project and build scripts exist, only document checks are executable in this repository. Add reproducible setup and build commands when those entry points are implemented.
+The Unity project and bootstrap tooling now exist; see Setup for verified commands and remaining platform checks.

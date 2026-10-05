@@ -8,8 +8,8 @@ P0 blocks the current milestone; P1 follows the foundation. IDs and dependencies
 | --- | --- | --- | --- | --- |
 | CR-001 | P0 | Inspect editor, Xcode, device, disk and signing; record findings in Setup | None | Done |
 | CR-002 | P0 | Install/activate Unity 6000.3.25f1 Apple Silicon plus iOS support; confirm Editor launches | Unity sign-in/license; installation authorised | Done; Hub license and Editor executable verified |
-| CR-003 | P0 | Initialise from the installed URP template; commit actual settings, package lock and metadata; compile cleanly | CR-002 | Todo; bootstrap tooling prepared, obtain URP template |
-| CR-004 | P0 | Generate camera, road, buildings and bike marker scene; inspect URP rendering | CR-003 | Blocked; scene generator prepared |
+| CR-003 | P0 | Initialise from the installed URP template; commit actual settings, package lock and metadata; compile cleanly | CR-002 | Done; generated settings/lock/metadata, batch compile passed |
+| CR-004 | P0 | Generate camera, road, buildings and bike marker scene; inspect URP rendering | CR-003 | Done; Smoke observed in Editor Play Mode |
 | CR-005 | P0 | Export Xcode project, sign with chosen team, install/launch on physical iPhone; observe scene | CR-004, valid Apple signing | Blocked |
 | CR-006 | P1 | Install Web support, build and serve over HTTPS; inspect browser scene and loading | CR-004, storage | Todo |
 | CR-010 | P0 | Implement normalized pointer input with release/focus-loss braking; mouse and touch behave consistently | M0 | Todo |
@@ -24,7 +24,7 @@ P0 blocks the current milestone; P1 follows the foundation. IDs and dependencies
 ## Current blockers
 
 - Storage blocker resolved: internal about 21 GiB free after installation and T7 about 870 GiB free on 5 October. Check temporary installation space as work proceeds.
-- Hub 3.22.2 and Editor 6000.3.25f1 ARM64 with iOS/Web installed. Personal license and Editor executable verified. CR-003 needs the official URP template from Hub.
+- Hub 3.22.2 and Editor 6000.3.25f1 ARM64 with iOS/Web installed. Personal license and Editor executable verified. CR-003/004 passed with the bundled URP template; next is iOS signing/export and device execution.
 - Xcode 26.6 is available. The previously paired iPhone 15 Pro Max currently reports unavailable; reconnect and recheck OS/Developer Mode before the device run.
 - Local Apple Development identity is reported expired; zero valid local identities. City Crew uses Expo/EAS and records an App Store release. Verify the existing Apple team in Xcode; remote credentials have not been inspected.
 - Git LFS is absent; install/configure before adding large binary source assets. Current work is text-only.

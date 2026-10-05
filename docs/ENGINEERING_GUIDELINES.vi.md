@@ -131,4 +131,4 @@ Trước khi bàn giao:
 - Cập nhật tài liệu tiếng Anh/Việt khi đổi kiến trúc hoặc gameplay.
 - Báo trung thực kiểm tra chưa chạy. Không bịa lệnh, kết quả CI hoặc khả năng truy cập thiết bị.
 
-Cho tới khi có Unity project và build script, repo này chỉ chạy được kiểm tra tài liệu. Bổ sung lệnh setup/build tái lập được khi các entry point đã được triển khai.
+Đã có Unity project và công cụ bootstrap; xem Setup để biết lệnh đã kiểm chứng và các bước kiểm tra nền tảng còn lại.

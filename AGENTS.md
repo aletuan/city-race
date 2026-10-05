@@ -13,7 +13,7 @@ User instructions take precedence. The GDD owns gameplay scope; TECH_STACK owns 
 - Unity + C#, iOS first; Android and Web compatibility tested early. Default engine line: Unity 6.3 LTS, with an exact patch chosen and committed when bootstrapping.
 - Start with GameObjects, URP, Input System, and a simple 3D overhead presentation. Camera and handling remain playtest variables.
 - Initial multiplayer candidate: Netcode for GameObjects + Unity Transport + Multiplayer Services Sessions/Relay, anonymous authentication, private rooms for 2–4 players. This candidate must pass latency and cross-platform tests before production commitment.
-- The repository currently contains documentation and bootstrap tooling, but no generated Unity project. Read [Setup](docs/SETUP.en.md) and [Backlog](docs/BACKLOG.en.md) before continuing M0. Never report Unity builds, tests, cloud configuration, or performance results as completed unless actually run and inspected.
+- The repository contains an initialized Unity URP project and an Editor-verified static Smoke scene. iPhone/Web builds are not yet verified. Read [Setup](docs/SETUP.en.md) and [Backlog](docs/BACKLOG.en.md) before continuing M0. Never report Unity builds, tests, cloud configuration, or performance results as completed unless actually run and inspected.
 
 ## Implementation rules
 

@@ -2,11 +2,13 @@
 """Bootstrap through Unity itself; never invent settings, package locks or scene YAML."""
 
 import argparse
+import json
 from pathlib import Path
 import plistlib
 import shutil
 import subprocess
 import sys
+import tarfile
 
 ROOT = Path(__file__).resolve().parents[1]
 VERSION = (ROOT / ".unity-version").read_text().strip()
@@ -47,14 +49,23 @@ def initialise(editor, template):
     targets = [ROOT / name for name in ("Assets", "Packages", "ProjectSettings")]
     if any(path.exists() for path in targets):
         raise RuntimeError("Project directories already exist. Refusing to overwrite them; use scene/export-ios after reviewing the project.")
+    def is_urp_template(path):
+        try:
+            with tarfile.open(path) as archive:
+                metadata = json.load(archive.extractfile("package/package.json"))
+            return metadata.get("name") == "com.unity.template.urp-blank"
+        except (OSError, tarfile.TarError, KeyError, ValueError, TypeError):
+            return False
+
     if template is None:
-        contents = editor.parents[1]
-        candidates = sorted(contents.rglob("com.unity.template.urp-blank*.tgz"))
+        template_dir = editor.parents[1] / "Resources/PackageManager/ProjectTemplates"
+        candidates = [path for path in sorted(template_dir.glob("*.tgz")) if is_urp_template(path)]
         if len(candidates) != 1:
             raise RuntimeError("Could not identify one URP blank template. Supply --template with the official URP template downloaded by Unity Hub.")
         template = candidates[0]
-    if not template.is_file() or "urp" not in template.name.lower():
-        raise RuntimeError("--template must point to the official installed URP .tgz template.")
+    if not template.is_file() or not is_urp_template(template):
+        raise RuntimeError("--template must contain the official com.unity.template.urp-blank package.")
+    print(f"Using URP template: {template}", flush=True)
 
     work = ROOT / ".bootstrap-work"
     project = work / "project"
