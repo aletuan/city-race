@@ -1,8 +1,8 @@
 # City Race Roadmap
 
-Version 0.1 • 5 October 2026 • [Tiếng Việt](ROADMAP.vi.md)
+Version 0.1 • 5 October 2026
 
-Follow [GDD](GDD.en.md), [stack](TECH_STACK.en.md), and [engineering conventions](ENGINEERING_GUIDELINES.en.md). Milestones are evidence gates, not calendar commitments. Work only on the next unproven risk; do not expand content to compensate for poor handling or networking.
+Follow [GDD](GDD.md), [stack](TECH_STACK.md), and [engineering conventions](ENGINEERING_GUIDELINES.md). Milestones are evidence gates, not calendar commitments. Work only on the next unproven risk; do not expand content to compensate for poor handling or networking.
 
 | Milestone | Deliverable | Exit evidence | Current status |
 | --- | --- | --- | --- |
@@ -18,7 +18,7 @@ Follow [GDD](GDD.en.md), [stack](TECH_STACK.en.md), and [engineering conventions
 
 1. M0 complete: pinned project, signed iPhone run and HTTPS Web visual evidence.
 2. Begin M1 with normalized input (CR-010) and bike handling (CR-011).
-3. Implement only the M1 control/handling tasks in [backlog](BACKLOG.en.md).
+3. Implement only the M1 control/handling tasks in [backlog](BACKLOG.md).
 4. Run a small playtest; create a dated report when it happens.
 5. Start M2 only when riding passes the GDD criteria.
 
@@ -28,6 +28,6 @@ M0's native smoke scene is a build diagnostic, not a riding prototype. Android p
 
 Use Backlog as the task tracker until GitHub Issues are deliberately adopted. Statuses: Todo, In progress, Blocked, Done. Done means acceptance evidence exists. Record date, commit, device/OS/browser, editor, build type, observed outcome and limitations. Keep logs and binaries outside Git by default.
 
-Create docs/playtests/YYYY-MM-DD-topic.en.md and .vi.md only after a real session. Include setup, participants without unnecessary personal details, tasks, observations, defects, decisions and next experiment. Separate observations from interpretation. Do not create a report implying a test occurred when it did not.
+Create docs/playtests/YYYY-MM-DD-topic.md only after a real session. Include setup, participants without unnecessary personal details, tasks, observations, defects, decisions and next experiment. Separate observations from interpretation. Do not create a report implying a test occurred when it did not.
 
-Technology changes need a short bilingual decision record. Revisit milestone scope when the experiment fails; do not label it complete to meet a date.
+Technology changes need a short decision record. Revisit milestone scope when the experiment fails; do not label it complete to meet a date.

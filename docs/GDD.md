@@ -1,14 +1,12 @@
-# City Race GDD v0.2 English
+# City Race GDD v0.2
 
 Game Design Document GDD v0.2 • 3 October 2026 • Draft for prototype development.
 
-Revision 0.2 records the confirmed technology direction and early Web/Android validation. Gameplay scope is unchanged. See [technical stack](TECH_STACK.en.md) and [engineering guidelines](ENGINEERING_GUIDELINES.en.md).
+Revision 0.2 records the confirmed technology direction and early Web/Android validation. Gameplay scope is unchanged. See [technical stack](TECH_STACK.md) and [engineering guidelines](ENGINEERING_GUIDELINES.md).
 
 A motorbike race through rush-hour traffic in Sài Gòn. Each player starts from a different home in the same neighbourhood, rides directly with one finger, and meets the others in traffic. The fun comes from observation, route choices, handling setbacks, and unexpected moments with friends.
 
 This document records the agreed direction and proposes the initial implementation scope. Durations, content counts, and gameplay parameters below are testing targets, not validated results. The working project title is “City Race”.
-
-[Vietnamese edition](GDD.vi.md)
 
 ## 1 Agreed direction
 

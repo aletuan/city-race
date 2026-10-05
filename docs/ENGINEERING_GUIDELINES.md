@@ -1,8 +1,8 @@
 # City Race Engineering Guidelines
 
-Version 0.1 • 3 October 2026 • [Tiếng Việt](ENGINEERING_GUIDELINES.vi.md)
+Version 0.1 • 3 October 2026
 
-These are project conventions for future implementation, not a claim that the game or its benchmarks already exist. Read [the stack](TECH_STACK.en.md) and [GDD](GDD.en.md) first. Prefer the smallest clear implementation that satisfies the current milestone.
+These are project conventions for future implementation, not a claim that the game or its benchmarks already exist. Read [the stack](TECH_STACK.md) and [GDD](GDD.md) first. Prefer the smallest clear implementation that satisfies the current milestone.
 
 ## 1 Apply SOLID to real boundaries
 
@@ -105,7 +105,7 @@ Ignore Library, Temp, Obj, Logs, UserSettings, generated builds and local creden
 
 Use English technical commit messages, for example feat(riding): add braking input. Keep changes scoped. Pin dependencies; explain additions and upgrades with purpose, license compatibility and target-platform evidence. Do not automatically upgrade packages during unrelated work.
 
-For meaningful architecture changes, add a short bilingual decision record with context, decision, trade-offs, validation and superseded choice. Keep both language editions semantically aligned; do not translate code identifiers.
+For meaningful architecture changes, add a short decision record with context, decision, trade-offs, validation and superseded choice.
 
 ## 8 Verification and completion
 
@@ -128,7 +128,7 @@ Before delivery:
 - Review changed files, metadata, serialized references and package locks.
 - Run relevant tests/builds that are available and inspect results.
 - Record device/browser/editor/package versions and limitations for performance claims.
-- Update English and Vietnamese docs when architecture or gameplay changes.
+- Update the relevant docs when architecture or gameplay changes.
 - Report unrun checks honestly. Do not fabricate commands, CI results or device access.
 
 The Unity project and bootstrap tooling now exist; see Setup for verified commands and remaining platform checks.

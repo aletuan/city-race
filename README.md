@@ -4,15 +4,18 @@ A multiplayer motorbike racing game set in Sài Gòn rush-hour traffic, with one
 
 ## Documentation
 
-- Game design v0.2: [Tiếng Việt](docs/GDD.vi.md) · [English](docs/GDD.en.md)
-- Technical stack v0.1: [Tiếng Việt](docs/TECH_STACK.vi.md) · [English](docs/TECH_STACK.en.md)
-- Engineering guidelines v0.1: [Tiếng Việt](docs/ENGINEERING_GUIDELINES.vi.md) · [English](docs/ENGINEERING_GUIDELINES.en.md)
-- Roadmap: [Tiếng Việt](docs/ROADMAP.vi.md) · [English](docs/ROADMAP.en.md)
-- Backlog: [Tiếng Việt](docs/BACKLOG.vi.md) · [English](docs/BACKLOG.en.md)
-- Setup and M0 validation: [Tiếng Việt](docs/SETUP.vi.md) · [English](docs/SETUP.en.md)
+Project documentation is English only; it is the single source of truth. Vietnamese is used for player-facing game text, not for repository docs.
+
+- [Game design v0.2](docs/GDD.md)
+- [Technical stack v0.1](docs/TECH_STACK.md)
+- [Engineering guidelines v0.1](docs/ENGINEERING_GUIDELINES.md)
+- [Roadmap](docs/ROADMAP.md)
+- [Backlog](docs/BACKLOG.md)
+- [Riding prototype and current evidence](docs/RIDING_PROTOTYPE.md)
+- [Setup and M0 validation](docs/SETUP.md)
 - [Agent entry point](AGENTS.md)
 
-Current stage: M0 smoke milestone complete; M1 riding prototype next. The Unity 6000.3.25f1 URP project and static Smoke scene are initialized. Editor compilation and Play Mode rendering were verified on 5 October 2026. Signed iPhone build/install/launch and portrait rendering are verified; HTTPS Web loading/rendering is confirmed by a user-provided Chrome screenshot. Console checks, mobile Web and runtime benchmarks remain unverified. Follow Setup for commands and current evidence; keep both language editions aligned.
+Current stage: M0 smoke milestone complete; M1 riding prototype next. The Unity 6000.3.25f1 URP project and static Smoke scene are initialized. Editor compilation and Play Mode rendering were verified on 5 October 2026. Signed iPhone build/install/launch and portrait rendering are verified; HTTPS Web loading/rendering is confirmed by a user-provided Chrome screenshot. Console checks, mobile Web and runtime benchmarks remain unverified. Follow Setup for commands and current evidence.
 
 ## Starting stack
 

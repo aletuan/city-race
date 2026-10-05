@@ -2,20 +2,20 @@
 
 ## Read first
 
-1. [Game design](docs/GDD.en.md) / [Thiết kế game](docs/GDD.vi.md).
-2. [Technical stack](docs/TECH_STACK.en.md) / [Tech stack](docs/TECH_STACK.vi.md).
-3. [Engineering conventions](docs/ENGINEERING_GUIDELINES.en.md) / [Quy ước kỹ thuật](docs/ENGINEERING_GUIDELINES.vi.md).
+1. [Game design](docs/GDD.md).
+2. [Technical stack](docs/TECH_STACK.md).
+3. [Engineering conventions](docs/ENGINEERING_GUIDELINES.md).
 
-User instructions take precedence. The GDD owns gameplay scope; TECH_STACK owns platform and technology decisions; ENGINEERING_GUIDELINES owns implementation rules. If they conflict, resolve against the latest explicit user decision and update both language editions. Ask only when the ambiguity materially blocks the task.
+User instructions take precedence. The GDD owns gameplay scope; TECH_STACK owns platform and technology decisions; ENGINEERING_GUIDELINES owns implementation rules. If they conflict, resolve against the latest explicit user decision and update the affected docs. Ask only when the ambiguity materially blocks the task.
 
 ## Project baseline
 
 - Unity + C#, iOS first; Android and Web compatibility tested early. Default engine line: Unity 6.3 LTS, with an exact patch chosen and committed when bootstrapping.
 - Start with GameObjects, URP, Input System, and a simple 3D overhead presentation. Camera and handling remain playtest variables.
 - Initial multiplayer candidate: Netcode for GameObjects + Unity Transport + Multiplayer Services Sessions/Relay, anonymous authentication, private rooms for 2–4 players. This candidate must pass latency and cross-platform tests before production commitment.
-- The repository contains an initialized Unity URP project and an Editor-verified static Smoke scene. The signed iPhone smoke run and user-supplied HTTPS Web render screenshot complete M0; Web console/performance remain unverified. Read [Setup](docs/SETUP.en.md) and [Backlog](docs/BACKLOG.en.md) before starting M1. Never report Unity builds, tests, cloud configuration, or performance results as completed unless actually run and inspected.
+- The repository contains an initialized Unity URP project and an Editor-verified static Smoke scene. The signed iPhone smoke run and user-supplied HTTPS Web render screenshot complete M0; Web console/performance remain unverified. Read [Setup](docs/SETUP.md) and [Backlog](docs/BACKLOG.md) before starting M1. Never report Unity builds, tests, cloud configuration, or performance results as completed unless actually run and inspected.
 
-M1 riding is now in progress: [prototype controls and validation](docs/RIDING_PROTOTYPE.en.md). Practice (0.0.4) is the enabled scene; Smoke and Riding are retained. Sixteen PlayMode tests passed, including pothole slow/fast/avoidance behaviour, course completion, recovery and Restart. Potholes are implemented; the bus remains next. The signed 0.0.4 iPhone build and install passed; launch is awaiting device unlock, with visual and handling acceptance pending. Physical handling, lifecycle and frame-rate acceptance remain open.
+M1 riding is now in progress: [prototype controls and validation](docs/RIDING_PROTOTYPE.md). Practice (0.0.4) is the enabled scene; Smoke and Riding are retained. Sixteen PlayMode tests passed, including pothole slow/fast/avoidance behaviour, course completion, recovery and Restart. Potholes are implemented; the bus remains next. The signed 0.0.4 iPhone build and install passed; launch is awaiting device unlock, with visual and handling acceptance pending. Physical handling, lifecycle and frame-rate acceptance remain open.
 
 ## Implementation rules
 
@@ -25,7 +25,7 @@ M1 riding is now in progress: [prototype controls and validation](docs/RIDING_PR
 - Pin editor/packages; preserve and commit Unity `.meta` files. Do not commit generated Unity caches, credentials, signing material, or local service tokens.
 - Profile on real target builds. Performance targets are provisional until measured; document device, build, scenario, and limitations.
 - Add meaningful tests for changed rules and integrations. Documentation-only changes need consistency, link, and diff checks, not invented runtime tests.
-- Update English and Vietnamese documents together for design or architecture changes. Code identifiers and technical commit messages use English; preserve Vietnamese player-facing text correctly.
+- Repository documentation is English only (single source of truth); do not add translated copies. Code identifiers and commit messages use English; preserve Vietnamese player-facing text correctly.
 - Keep work within the requested scope. A documentation task does not authorize creating paid services, adding gameplay systems, or publishing a game.
 
 ## Before delivery

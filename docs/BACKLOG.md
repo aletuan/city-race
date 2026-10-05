@@ -1,6 +1,6 @@
 # City Race Backlog
 
-Version 0.1 • 5 October 2026 • [Tiếng Việt](BACKLOG.vi.md) • [Roadmap](ROADMAP.en.md)
+Version 0.1 • 5 October 2026 • [Roadmap](ROADMAP.md)
 
 P0 blocks the current milestone; P1 follows the foundation. IDs and dependencies are shared across languages. Status reflects observed evidence, not planned success.
 
@@ -29,6 +29,6 @@ P0 blocks the current milestone; P1 follows the foundation. IDs and dependencies
 - Signing resolved after Xcode reauthentication: automatic signing and the physical iPhone run passed. City Crew credentials were not modified.
 - Git LFS is absent; install/configure before adding large binary source assets. Current work is text-only.
 
-The full environment and continuation steps are in [Setup](SETUP.en.md). Keep M1 acceptance open until manual device checks are recorded.
+The full environment and continuation steps are in [Setup](SETUP.md). Keep M1 acceptance open until manual device checks are recorded.
 
-M1 riding increment: [implementation, controls and validation](RIDING_PROTOTYPE.en.md).
+M1 riding increment: [implementation, controls and validation](RIDING_PROTOTYPE.md).

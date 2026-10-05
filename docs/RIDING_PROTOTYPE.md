@@ -1,6 +1,6 @@
 # Riding prototype — M1, potholes (0.0.4)
 
-5 October 2026 • [Tiếng Việt](RIDING_PROTOTYPE.vi.md)
+5 October 2026
 
 Practice now contains two fixed potholes: at (0, 8) and (18.7, 34) in road X/Z metres. Broken brown rims, dark depressions and amber approach strokes make them visible; both leave room to ride around. They never spawn in response to player position. The bottom hint explains avoiding or slowing down.
 
@@ -22,7 +22,7 @@ iOS 0.0.4 export, signed Xcode 26.6 Debug build, strict signature verification a
 
 # Riding prototype — M1, practice course (0.0.3)
 
-5 October 2026 • [Tiếng Việt](RIDING_PROTOTYPE.vi.md)
+5 October 2026
 
 Current scene: `Assets/CityRace/Content/Scenes/Practice.unity`. Smoke and the original straight Riding scene remain available, but Practice is the enabled build scene. Generate only a missing scene with `python3 tools/unity_project.py practice`; existing scenes are never overwritten by the generator.
 
@@ -52,7 +52,7 @@ iOS 0.0.3 export and signed Xcode 26.6 Debug build passed. Strict code-sign veri
 
 # Riding prototype — M1, first increment
 
-5 October 2026 • [Tiếng Việt](RIDING_PROTOTYPE.vi.md)
+5 October 2026
 
 M0 established the build pipeline. This increment begins CR-010/011: one bike on a bounded 120 m practice road, using the same motor for mouse and touch. M1 is not complete.
 
@@ -88,7 +88,7 @@ Close the interactive Editor for this project first. Invoke the pinned Unity exe
 python3 tools/unity_project.py export-ios
 ```
 
-Do not add `-quit` to the test command; the test runner exits when finished. See [Setup](SETUP.en.md) for signing/device prerequisites. Run `python3 tools/unity_project.py riding` only to generate a missing scene, not to update the committed one.
+Do not add `-quit` to the test command; the test runner exits when finished. See [Setup](SETUP.md) for signing/device prerequisites. Run `python3 tools/unity_project.py riding` only to generate a missing scene, not to update the committed one.
 
 ## Next acceptance check
 

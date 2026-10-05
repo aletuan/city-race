@@ -108,7 +108,7 @@ This is the **next proposed implementation plan**, not an already implemented fe
 4. Keep motion and collisions consistent with the fixed simulation step. Avoid crushing the bike against a kerb or producing permanent gridlock. Do not assume a moving kinematic body gives fair collision behaviour without tests.
 5. Keep presentation separate from traffic state. Restart must reset bus position, phase, indicators and timers; recovery must not place the bike inside the bus. Define an occupied-recovery-position fallback that never advances progress.
 6. Add meaningful tests: signal precedes pull-in, bounded motion, no passing through the bus, escape/waiting behaviour, replay reset and interaction with pothole protection/recovery. Retain the existing regression suite.
-7. Build/install on iPhone and inspect actual behaviour. Update English/Vietnamese docs and backlog with evidence and limitations, then commit/push within the user's existing workflow.
+7. Build/install on iPhone and inspect actual behaviour. Update docs and backlog with evidence and limitations, then commit/push within the user's existing workflow.
 
 Do not start full-city pathfinding, a traffic framework, multiplayer, police, rain or monetisation as part of this increment.
 
@@ -183,11 +183,11 @@ Web, when needed: `python3 tools/unity_project.py build-web`, then `python3 tool
 
 Read these for design/conventions, but distinguish history from current state:
 
-1. [GDD English](docs/GDD.en.md) / [Vietnamese](docs/GDD.vi.md).
-2. [Technical stack English](docs/TECH_STACK.en.md) / [Vietnamese](docs/TECH_STACK.vi.md).
-3. [Engineering guidelines English](docs/ENGINEERING_GUIDELINES.en.md) / [Vietnamese](docs/ENGINEERING_GUIDELINES.vi.md).
-4. [Current prototype and evidence English](docs/RIDING_PROTOTYPE.en.md) / [Vietnamese](docs/RIDING_PROTOTYPE.vi.md).
-5. [Backlog](docs/BACKLOG.en.md), [roadmap](docs/ROADMAP.en.md), [setup chronology](docs/SETUP.en.md).
+1. [GDD](docs/GDD.md).
+2. [Technical stack](docs/TECH_STACK.md).
+3. [Engineering guidelines](docs/ENGINEERING_GUIDELINES.md).
+4. [Current prototype and evidence](docs/RIDING_PROTOTYPE.md).
+5. [Backlog](docs/BACKLOG.md), [roadmap](docs/ROADMAP.md), [setup chronology](docs/SETUP.md).
 
 Review findings to reconcile during the next documentation update:
 
@@ -197,8 +197,8 @@ Review findings to reconcile during the next documentation update:
 - TECH_STACK still contains pre-bootstrap wording such as no Unity project/exact packages unset. Use actual manifest/lock and ProjectSettings for installed versions.
 - RIDING_PROTOTYPE contains historical 0.0.2/0.0.3 sections, including “no potholes”; its top 0.0.4 section supersedes them.
 
-Do not silently rewrite old evidence into claims of new tests. Keep English/Vietnamese design and architecture docs aligned when changing them.
+Do not silently rewrite old evidence into claims of new tests. Documentation is English only (single source of truth since 6 October 2026); Vietnamese .vi.md editions were removed and must not be recreated.
 
 ## Suggested first continuation prompt
 
-> Read CLAUDE.md and AGENTS.md, verify the current checkout, and resume City Race from the 0.0.4 pothole baseline. First close the pending iPhone validation if the device is available, fixing blocking handling/readability defects. Then implement one bus that visibly signals before gradually pulling into a stop, preserving collision fairness, recovery and replay. Keep scope within M1, run relevant tests/builds, record actual evidence in both language editions and commit/push. Do not start multiplayer or publish a release yet.
+> Read CLAUDE.md and AGENTS.md, verify the current checkout, and resume City Race from the 0.0.4 pothole baseline. First close the pending iPhone validation if the device is available, fixing blocking handling/readability defects. Then implement one bus that visibly signals before gradually pulling into a stop, preserving collision fairness, recovery and replay. Keep scope within M1, run relevant tests/builds, record actual evidence in the docs and commit/push. Do not start multiplayer or publish a release yet.

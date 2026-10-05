@@ -1,6 +1,6 @@
 # City Race Technical Stack
 
-Version 0.1 • 3 October 2026 • [Tiếng Việt](TECH_STACK.vi.md)
+Version 0.1 • 3 October 2026
 
 ## 1 Decisions and status
 
@@ -98,4 +98,4 @@ A milestone is complete only with recorded build/device evidence, not because co
 
 Minimum supported devices/OS versions; exact package pins; traffic density and network tick budgets; hosting costs; final movement prediction strategy; browser-host support if later requested; and whether Web ships as a demo or full game.
 
-Resolve these through focused experiments and dated architecture decisions under docs/decisions/. Keep English and Vietnamese decisions aligned. Consult [engineering conventions](ENGINEERING_GUIDELINES.en.md) for implementation and validation rules.
+Resolve these through focused experiments and dated architecture decisions under docs/decisions/. Consult [engineering conventions](ENGINEERING_GUIDELINES.md) for implementation and validation rules.

@@ -1,10 +1,10 @@
 # City Race Setup
 
-Version 0.1 • 5 October 2026 • [Tiếng Việt](SETUP.vi.md)
+Version 0.1 • 5 October 2026
 
 ## M0: the first technical milestone
 
-M0 means Milestone 0: establish a repeatable path from source to a minimal scene running on real hardware. It is not the playable riding prototype (M1). Follow the [roadmap](ROADMAP.en.md) and [backlog](BACKLOG.en.md).
+M0 means Milestone 0: establish a repeatable path from source to a minimal scene running on real hardware. It is not the playable riding prototype (M1). Follow the [roadmap](ROADMAP.md) and [backlog](BACKLOG.md).
 
 M0 exits only when the pinned URP project compiles, the smoke scene is visually verified on a physical iPhone, a hosted HTTPS Web build is inspected, and actual editor/package versions and results are recorded. Exporting an Xcode project alone does not prove an iPhone run.
 
