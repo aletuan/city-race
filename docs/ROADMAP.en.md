@@ -6,7 +6,7 @@ Follow [GDD](GDD.en.md), [stack](TECH_STACK.en.md), and [engineering conventions
 
 | Milestone | Deliverable | Exit evidence | Current status |
 | --- | --- | --- | --- |
-| M0 Environment and bootstrap | Pinned Unity project, minimal URP scene, repeatable build path | Scene running on a real iPhone; hosted Web smoke test; editor/package versions recorded | In progress; Unity installation and signing blocked |
+| M0 Environment and bootstrap | Pinned Unity project, minimal URP scene, repeatable build path | Scene running on a real iPhone; hosted Web smoke test; editor/package versions recorded | In progress; Editor installed; project bootstrap and signing pending |
 | M1 Riding prototype | One-finger bike motor, road, pothole, bus, greybox obstacles | New players can start/turn/stop; repeat-play feedback; target-device performance baseline; Android smoke build | Planned |
 | M2 Multiplayer prototype | Two homes, two players, shared traffic and destination; then four players | Native/Web session, responsive movement, consistent results, disconnect handling, Relay bytes per player-hour | Planned |
 | M3 Complete small level | Four homes, morning commute, scoped events, simple customisation, audio, results and replay | External group completes the whole flow and voluntarily replays; representative-load performance | Planned |

@@ -7,8 +7,8 @@ P0 chặn mốc hiện tại; P1 đi sau nền tảng. Hai ngôn ngữ dùng chu
 | ID | Ưu tiên | Công việc và nghiệm thu | Phụ thuộc | Trạng thái |
 | --- | --- | --- | --- | --- |
 | CR-001 | P0 | Kiểm tra editor, Xcode, thiết bị, ổ đĩa, signing; ghi vào Setup | Không | Xong |
-| CR-002 | P0 | Cài/kích hoạt Unity 6000.3.25f1 Apple Silicon và iOS support; xác nhận mở Editor | Đăng nhập/license Unity; đã cho phép cài | Chưa làm |
-| CR-003 | P0 | Khởi tạo từ URP template đã cài; commit settings, package lock, metadata thật; compile sạch | CR-002 | Bị chặn; đã chuẩn bị công cụ khởi tạo |
+| CR-002 | P0 | Cài/kích hoạt Unity 6000.3.25f1 Apple Silicon và iOS support; xác nhận mở Editor | Đăng nhập/license Unity; đã cho phép cài | Xong; đã xác minh license Hub và executable Editor |
+| CR-003 | P0 | Khởi tạo từ URP template đã cài; commit settings, package lock, metadata thật; compile sạch | CR-002 | Chưa làm; đã chuẩn bị công cụ, cần lấy URP template |
 | CR-004 | P0 | Sinh cảnh camera, đường, nhà, mô hình xe; quan sát URP render | CR-003 | Bị chặn; đã chuẩn bị bộ sinh cảnh |
 | CR-005 | P0 | Xuất Xcode project, ký với team đã chọn, cài/chạy iPhone thật; quan sát cảnh | CR-004, signing Apple hợp lệ | Bị chặn |
 | CR-006 | P1 | Cài Web support, build và phục vụ qua HTTPS; kiểm tra cảnh/tải trên trình duyệt | CR-004, dung lượng | Chưa làm |
@@ -23,8 +23,8 @@ P0 chặn mốc hiện tại; P1 đi sau nền tảng. Hai ngôn ngữ dùng chu
 
 ## Trở ngại hiện tại
 
-- Đã giải quyết trở ngại dung lượng: ngày 05/10 internal còn khoảng 38 GiB, T7 khoảng 870 GiB. Tiếp tục kiểm tra dung lượng tạm khi cài.
-- Chưa thấy Unity Editor/Hub tại vị trí hệ thống/user thông thường. Chưa xác minh activation.
+- Đã giải quyết trở ngại dung lượng: ngày 05/10 internal còn khoảng 21 GiB sau cài đặt, T7 khoảng 870 GiB. Tiếp tục kiểm tra dung lượng tạm khi cài.
+- Đã cài Hub 3.22.2 và Editor 6000.3.25f1 ARM64 cùng iOS/Web. Đã xác minh license Personal và executable Editor. CR-003 cần lấy URP template chính thức qua Hub.
 - Có Xcode 26.6. iPhone 15 Pro Max đã từng pair hiện báo unavailable; kết nối và kiểm tra lại OS/Developer Mode trước khi chạy thử.
 - Apple Development identity local báo hết hạn; không có identity local hợp lệ. City Crew dùng Expo/EAS và ghi nhận đã phát hành App Store. Cần xác minh Apple team hiện có trong Xcode; chưa kiểm tra credential từ xa.
 - Chưa có Git LFS; cài/cấu hình trước khi thêm asset nguồn nhị phân lớn. Công việc hiện tại chỉ có text.

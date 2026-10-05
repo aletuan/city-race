@@ -15,9 +15,9 @@ M0 exits only when the pinned URP project compiles, the smoke scene is visually 
 | Mac architecture | Apple Silicon, arm64 |
 | Repository | `/Volumes/T7-Workspace/Projects/Codex/city-race` |
 | Legacy access path | `~/Workspace/Codex` is a symlink to `/Volumes/T7-Workspace/Projects/Codex` |
-| Available storage | Internal about 38 GiB; T7 shared APFS free space about 870 GiB; values change over time |
-| Selected editor | Unity 6000.3.25f1, recorded in `.unity-version`; not installed |
-| Unity Hub | Not found in standard system/user Applications locations |
+| Available storage | Internal about 21 GiB after installation; T7 shared APFS free space about 870 GiB; values change over time |
+| Selected editor | Unity 6000.3.25f1, recorded in `.unity-version`; Apple Silicon editor and iOS/Web modules installed |
+| Unity Hub | 3.22.2 installed through Homebrew at `/Applications/Unity Hub.app`; signed in, Personal license activation shown on 5 October 2026 |
 | Xcode | 26.6, build 17F113 |
 | iPhone | Previously paired iPhone 15 Pro Max; currently unavailable in `devicectl`; reconnect before testing |
 | Signing | Login Keychain has one Apple Development identity reported expired (CSSMERR_TP_CERT_EXPIRED); zero valid identities |
@@ -67,3 +67,9 @@ Python syntax, CLI help, missing-editor guard, local Markdown links and whitespa
 ## Signing follow-up — 5 October 2026
 
 The existing City Crew project uses Expo/EAS, has a production submission configuration, and its README records an App Store release. Its build profiles do not override the default credentials source. Remote signing credentials may therefore be managed by EAS; their validity was not inspected. An App Store release does not establish a currently usable local development identity. For City Race, verify the existing Apple Developer team in Xcode and configure automatic development signing for its own bundle ID. Do not revoke or replace City Crew credentials.
+
+## Installation verification — 5 October 2026
+
+Unity Hub 3.22.2 installed via Homebrew. Hub CLI completed installation of 6000.3.25f1 (revision e1dba0a9aba4), ARM64, with `ios` and `webgl`, reporting all tasks successful. The Editor executable returned `6000.3.25f1` with exit code 0 after the first-run terms screen. Hub displays an active Personal license. Preflight now passes. Modules are in the installation root’s `PlaybackEngines/iOSSupport` and `PlaybackEngines/WebGLSupport`, alongside `Unity.app`.
+
+The official URP blank template is not bundled in this editor installation. Obtain it through Hub and use `--template` during CR-003. No project has been generated and no Unity project compile or device/browser build has run. Git LFS remains absent; do not add large binary source assets yet.

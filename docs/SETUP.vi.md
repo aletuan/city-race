@@ -15,9 +15,9 @@ Chỉ hoàn thành M0 khi project URP đã khóa phiên bản compile thành cô
 | Kiến trúc Mac | Apple Silicon, arm64 |
 | Repository | `/Volumes/T7-Workspace/Projects/Codex/city-race` |
 | Đường dẫn cũ | `~/Workspace/Codex` là symlink tới `/Volumes/T7-Workspace/Projects/Codex` |
-| Dung lượng trống | Internal khoảng 38 GiB; APFS dùng chung trên T7 khoảng 870 GiB; thay đổi theo thời điểm |
-| Editor đã chọn | Unity 6000.3.25f1, ghi trong `.unity-version`; chưa cài |
-| Unity Hub | Chưa thấy tại Applications hệ thống/user thông thường |
+| Dung lượng trống | Internal khoảng 21 GiB sau cài đặt; APFS dùng chung trên T7 khoảng 870 GiB; thay đổi theo thời điểm |
+| Editor đã chọn | Unity 6000.3.25f1, ghi trong `.unity-version`; đã cài editor Apple Silicon cùng module iOS/Web |
+| Unity Hub | Đã cài 3.22.2 qua Homebrew tại `/Applications/Unity Hub.app`; đã đăng nhập, Hub hiển thị kích hoạt license Personal ngày 05/10/2026 |
 | Xcode | 26.6, build 17F113 |
 | iPhone | iPhone 15 Pro Max đã từng pair; hiện unavailable trong `devicectl`; cần kết nối lại trước khi thử |
 | Signing | Login Keychain có một Apple Development identity báo hết hạn (CSSMERR_TP_CERT_EXPIRED); 0 identity hợp lệ |
@@ -67,3 +67,9 @@ Cú pháp Python, CLI help, chặn khi thiếu editor, link Markdown local và w
 ## Kiểm tra thêm signing — 05/10/2026
 
 Project City Crew hiện dùng Expo/EAS, có cấu hình submit production và README ghi đã phát hành App Store. Các build profile không đổi nguồn credential mặc định. Vì vậy credential ký từ xa có thể do EAS quản lý; chưa kiểm tra tính hợp lệ của chúng. Việc đã phát hành App Store chưa chứng minh máy local hiện có development identity dùng được. Với City Race, xác minh Apple Developer team hiện có trong Xcode và cấu hình automatic development signing cho bundle ID riêng. Không thu hồi hoặc thay credential City Crew.
+
+## Xác minh cài đặt — 05/10/2026
+
+Đã cài Unity Hub 3.22.2 qua Homebrew. Hub CLI hoàn tất cài 6000.3.25f1 (revision e1dba0a9aba4), ARM64, cùng `ios` và `webgl`, báo tất cả thành công. Executable Editor trả về `6000.3.25f1`, exit code 0 sau màn hình điều khoản lần đầu. Hub hiển thị license Personal đã kích hoạt. Preflight hiện đạt. Module nằm ở `PlaybackEngines/iOSSupport` và `PlaybackEngines/WebGLSupport` tại gốc bộ cài, cạnh `Unity.app`.
+
+Bộ cài editor này không kèm URP blank template chính thức. Lấy template qua Hub và dùng `--template` ở CR-003. Chưa sinh project, chưa compile project Unity hoặc build cho thiết bị/trình duyệt. Git LFS vẫn chưa có; chưa thêm asset nguồn nhị phân lớn.
