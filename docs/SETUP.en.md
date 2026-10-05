@@ -20,7 +20,7 @@ M0 exits only when the pinned URP project compiles, the smoke scene is visually 
 | Unity Hub | Not found in standard system/user Applications locations |
 | Xcode | 26.6, build 17F113 |
 | iPhone | Previously paired iPhone 15 Pro Max; currently unavailable in `devicectl`; reconnect before testing |
-| Signing | Keychain check returned zero valid code-signing identities |
+| Signing | Login Keychain has one Apple Development identity reported expired (CSSMERR_TP_CERT_EXPIRED); zero valid identities |
 | Git LFS | Not installed; needed before introducing large binary source assets, not for current text files |
 | Project | No generated Assets, Packages or ProjectSettings yet |
 
@@ -63,3 +63,7 @@ For Web, serve the generated build through HTTPS with correct compression header
 ## Current verification
 
 Python syntax, CLI help, missing-editor guard, local Markdown links and whitespace are checked during step 1. Unity compilation, template compatibility, generated scene, iOS export, signing, device execution and Web build remain unverified until their respective tasks run. Update this section and the backlog with real evidence, not planned outcomes.
+
+## Signing follow-up — 5 October 2026
+
+The existing City Crew project uses Expo/EAS, has a production submission configuration, and its README records an App Store release. Its build profiles do not override the default credentials source. Remote signing credentials may therefore be managed by EAS; their validity was not inspected. An App Store release does not establish a currently usable local development identity. For City Race, verify the existing Apple Developer team in Xcode and configure automatic development signing for its own bundle ID. Do not revoke or replace City Crew credentials.

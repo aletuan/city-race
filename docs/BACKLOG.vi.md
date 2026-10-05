@@ -26,7 +26,7 @@ P0 chặn mốc hiện tại; P1 đi sau nền tảng. Hai ngôn ngữ dùng chu
 - Đã giải quyết trở ngại dung lượng: ngày 05/10 internal còn khoảng 38 GiB, T7 khoảng 870 GiB. Tiếp tục kiểm tra dung lượng tạm khi cài.
 - Chưa thấy Unity Editor/Hub tại vị trí hệ thống/user thông thường. Chưa xác minh activation.
 - Có Xcode 26.6. iPhone 15 Pro Max đã từng pair hiện báo unavailable; kết nối và kiểm tra lại OS/Developer Mode trước khi chạy thử.
-- Keychain không trả về chứng chỉ code-signing hợp lệ. Cần cấu hình signing team.
+- Apple Development identity local báo hết hạn; không có identity local hợp lệ. City Crew dùng Expo/EAS và ghi nhận đã phát hành App Store. Cần xác minh Apple team hiện có trong Xcode; chưa kiểm tra credential từ xa.
 - Chưa có Git LFS; cài/cấu hình trước khi thêm asset nguồn nhị phân lớn. Công việc hiện tại chỉ có text.
 
 Chi tiết môi trường và bước tiếp tục trong [Setup](SETUP.vi.md). Không đánh dấu CR-003–005 xong trước khi công cụ chạy thành công thật.

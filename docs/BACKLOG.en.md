@@ -26,7 +26,7 @@ P0 blocks the current milestone; P1 follows the foundation. IDs and dependencies
 - Storage blocker resolved: internal about 38 GiB free and T7 about 870 GiB free on 5 October. Check temporary installation space as work proceeds.
 - No Unity Editor/Hub found in the standard system/user locations. Activation status cannot be verified.
 - Xcode 26.6 is available. The previously paired iPhone 15 Pro Max currently reports unavailable; reconnect and recheck OS/Developer Mode before the device run.
-- No valid code-signing identity returned by the keychain check. Signing team must be configured.
+- Local Apple Development identity is reported expired; zero valid local identities. City Crew uses Expo/EAS and records an App Store release. Verify the existing Apple team in Xcode; remote credentials have not been inspected.
 - Git LFS is absent; install/configure before adding large binary source assets. Current work is text-only.
 
 The full environment and continuation steps are in [Setup](SETUP.en.md). Do not mark CR-003–005 done until the tools have actually run successfully.

@@ -20,7 +20,7 @@ Chỉ hoàn thành M0 khi project URP đã khóa phiên bản compile thành cô
 | Unity Hub | Chưa thấy tại Applications hệ thống/user thông thường |
 | Xcode | 26.6, build 17F113 |
 | iPhone | iPhone 15 Pro Max đã từng pair; hiện unavailable trong `devicectl`; cần kết nối lại trước khi thử |
-| Signing | Kiểm tra Keychain trả về 0 chứng chỉ code-signing hợp lệ |
+| Signing | Login Keychain có một Apple Development identity báo hết hạn (CSSMERR_TP_CERT_EXPIRED); 0 identity hợp lệ |
 | Git LFS | Chưa cài; cần trước khi thêm asset nguồn nhị phân lớn, chưa cần cho các file text hiện tại |
 | Project | Chưa có Assets, Packages hoặc ProjectSettings do Unity sinh |
 
@@ -63,3 +63,7 @@ Với Web, phục vụ build qua HTTPS cùng header nén đúng; kiểm tra tả
 ## Kiểm chứng hiện tại
 
 Cú pháp Python, CLI help, chặn khi thiếu editor, link Markdown local và whitespace được kiểm tra trong bước 1. Compile Unity, tương thích template, cảnh sinh ra, xuất iOS, signing, chạy thiết bị và build Web chưa được kiểm chứng cho tới khi thực hiện từng task. Cập nhật mục này và backlog bằng bằng chứng thực tế, không ghi kết quả dự kiến như đã hoàn thành.
+
+## Kiểm tra thêm signing — 05/10/2026
+
+Project City Crew hiện dùng Expo/EAS, có cấu hình submit production và README ghi đã phát hành App Store. Các build profile không đổi nguồn credential mặc định. Vì vậy credential ký từ xa có thể do EAS quản lý; chưa kiểm tra tính hợp lệ của chúng. Việc đã phát hành App Store chưa chứng minh máy local hiện có development identity dùng được. Với City Race, xác minh Apple Developer team hiện có trong Xcode và cấu hình automatic development signing cho bundle ID riêng. Không thu hồi hoặc thay credential City Crew.
