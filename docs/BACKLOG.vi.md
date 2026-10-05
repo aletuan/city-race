@@ -10,7 +10,7 @@ P0 chặn mốc hiện tại; P1 đi sau nền tảng. Hai ngôn ngữ dùng chu
 | CR-002 | P0 | Cài/kích hoạt Unity 6000.3.25f1 Apple Silicon và iOS support; xác nhận mở Editor | Đăng nhập/license Unity; đã cho phép cài | Xong; đã xác minh license Hub và executable Editor |
 | CR-003 | P0 | Khởi tạo từ URP template đã cài; commit settings, package lock, metadata thật; compile sạch | CR-002 | Xong; đã sinh settings/lock/metadata, batch compile đạt |
 | CR-004 | P0 | Sinh cảnh camera, đường, nhà, mô hình xe; quan sát URP render | CR-003 | Xong; đã quan sát Smoke trong Editor Play Mode |
-| CR-005 | P0 | Xuất Xcode project, ký với team đã chọn, cài/chạy iPhone thật; quan sát cảnh | CR-004, signing Apple hợp lệ | Bị chặn |
+| CR-005 | P0 | Xuất Xcode project, ký với team đã chọn, cài/chạy iPhone thật; quan sát cảnh | CR-004, signing Apple hợp lệ | Bị chặn: xuất iOS + build native chưa ký đạt; Xcode lỗi tải team |
 | CR-006 | P1 | Cài Web support, build và phục vụ qua HTTPS; kiểm tra cảnh/tải trên trình duyệt | CR-004, dung lượng | Chưa làm |
 | CR-010 | P0 | Input pointer chuẩn hóa, phanh khi nhả/mất focus; chuột/cảm ứng nhất quán | M0 | Chưa làm |
 | CR-011 | P0 | Bộ điều khiển xe có tăng tốc/rẽ/phanh; so sánh frame rate | CR-010 | Chưa làm |

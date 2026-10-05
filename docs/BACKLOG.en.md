@@ -10,7 +10,7 @@ P0 blocks the current milestone; P1 follows the foundation. IDs and dependencies
 | CR-002 | P0 | Install/activate Unity 6000.3.25f1 Apple Silicon plus iOS support; confirm Editor launches | Unity sign-in/license; installation authorised | Done; Hub license and Editor executable verified |
 | CR-003 | P0 | Initialise from the installed URP template; commit actual settings, package lock and metadata; compile cleanly | CR-002 | Done; generated settings/lock/metadata, batch compile passed |
 | CR-004 | P0 | Generate camera, road, buildings and bike marker scene; inspect URP rendering | CR-003 | Done; Smoke observed in Editor Play Mode |
-| CR-005 | P0 | Export Xcode project, sign with chosen team, install/launch on physical iPhone; observe scene | CR-004, valid Apple signing | Blocked |
+| CR-005 | P0 | Export Xcode project, sign with chosen team, install/launch on physical iPhone; observe scene | CR-004, valid Apple signing | Blocked: export + unsigned native build passed; Xcode team retrieval failed |
 | CR-006 | P1 | Install Web support, build and serve over HTTPS; inspect browser scene and loading | CR-004, storage | Todo |
 | CR-010 | P0 | Implement normalized pointer input with release/focus-loss braking; mouse and touch behave consistently | M0 | Todo |
 | CR-011 | P0 | Implement constrained bike motor with acceleration, turning and braking; compare frame rates | CR-010 | Todo |
