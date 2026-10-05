@@ -11,6 +11,7 @@ namespace CityRace.Presentation
         [SerializeField] private Text _hint;
         [SerializeField] private Button _restart;
         private float _nextRefresh;
+        private BikeMotor _motor;
         private bool Vietnamese => Application.systemLanguage == SystemLanguage.Vietnamese;
 
         public void Configure(PracticeCourse course, Text status, Text hint, Button restart)
@@ -22,6 +23,7 @@ namespace CityRace.Presentation
         }
         private void Start()
         {
+            _motor = _course.GetComponent<BikeMotor>();
             _restart.onClick.AddListener(Restart);
             _restart.GetComponentInChildren<Text>().text = Vietnamese ? "Chơi lại" : "Restart";
         }
@@ -47,9 +49,14 @@ namespace CityRace.Presentation
                 _status.text = (Vietnamese ? "Dừng trong ô vàng" : "Stop in the yellow square") + $"  {progress.ElapsedSeconds:0.0}s";
             }
             else { _status.text = $"{arrow}  {(Vietnamese ? "Đến công ty" : "To work")}  •  {progress.ElapsedSeconds:0.0}s"; }
+            if (_motor.PotholeFeedbackSeconds > 0f)
+            {
+                _hint.text = Vietnamese ? "Ổ gà! Giảm tốc trước khi đi qua" : "Pothole! Slow down before crossing";
+                return;
+            }
             _hint.text = _course.RecoveryFraction > 0.15f
                 ? (Vietnamese ? "Đang thoát kẹt… " : "Recovering… ") + $"{_course.RecoveryFraction * 100:0}%"
-                : (Vietnamese ? "Kéo để lái • Nhả để phanh\nKẹt? Nhả rồi giữ yên 1,2 giây (+2s)" : "Drag to ride • Release to brake\nStuck? Release, then hold still 1.2s (+2s)");
+                : (Vietnamese ? "Ổ gà: né hoặc đi chậm\nKéo để lái • Nhả để phanh\nKẹt? Nhả rồi giữ yên 1,2 giây (+2s)" : "Potholes: avoid or slow down\nDrag to ride • Release to brake\nStuck? Release, hold still 1.2s (+2s)");
         }
     }
 }

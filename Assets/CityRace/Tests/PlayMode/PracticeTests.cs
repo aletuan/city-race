@@ -119,6 +119,7 @@ namespace CityRace.Tests
             }
             Assert.That(course.Progress.Finished, Is.True, $"Stuck at {motor.transform.position}, gate {course.Progress.NextCheckpoint}");
             Assert.That(motor.Speed, Is.LessThan(.01f));
+            Assert.That(motor.PotholeHits, Is.GreaterThanOrEqualTo(1), "The authored route must encounter a pothole; floor contact must not suppress it.");
             _mouse = InputSystem.AddDevice<Mouse>();
             var button = (RectTransform)Object.FindFirstObjectByType<Button>().transform;
             var center = RectTransformUtility.WorldToScreenPoint(null, button.TransformPoint(button.rect.center));

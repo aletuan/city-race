@@ -15,7 +15,7 @@ User instructions take precedence. The GDD owns gameplay scope; TECH_STACK owns 
 - Initial multiplayer candidate: Netcode for GameObjects + Unity Transport + Multiplayer Services Sessions/Relay, anonymous authentication, private rooms for 2–4 players. This candidate must pass latency and cross-platform tests before production commitment.
 - The repository contains an initialized Unity URP project and an Editor-verified static Smoke scene. The signed iPhone smoke run and user-supplied HTTPS Web render screenshot complete M0; Web console/performance remain unverified. Read [Setup](docs/SETUP.en.md) and [Backlog](docs/BACKLOG.en.md) before starting M1. Never report Unity builds, tests, cloud configuration, or performance results as completed unless actually run and inspected.
 
-M1 riding is now in progress: [prototype controls and validation](docs/RIDING_PROTOTYPE.en.md). Practice (0.0.3) is the enabled scene; Smoke and Riding are retained. Eleven PlayMode tests passed, including course completion, recovery and Restart. The signed 0.0.3 iPhone build/install/launch passed; native visual and handling acceptance is pending. Physical handling, lifecycle and frame-rate acceptance remain open.
+M1 riding is now in progress: [prototype controls and validation](docs/RIDING_PROTOTYPE.en.md). Practice (0.0.4) is the enabled scene; Smoke and Riding are retained. Sixteen PlayMode tests passed, including pothole slow/fast/avoidance behaviour, course completion, recovery and Restart. Potholes are implemented; the bus remains next. The signed 0.0.4 iPhone build and install passed; launch is awaiting device unlock, with visual and handling acceptance pending. Physical handling, lifecycle and frame-rate acceptance remain open.
 
 ## Implementation rules
 

@@ -14,7 +14,7 @@ P0 blocks the current milestone; P1 follows the foundation. IDs and dependencies
 | CR-006 | P1 | Install Web support, build and serve over HTTPS; inspect browser scene and loading | CR-004, storage | Done; HTTPS loading/render confirmed by user screenshot; console unverified |
 | CR-010 | P0 | Implement normalized pointer input with release/focus-loss braking; mouse and touch behave consistently | M0 | In progress; practice course, recovery + 11 PlayMode tests passed; device feel/frame-rate checks pending |
 | CR-011 | P0 | Implement constrained bike motor with acceleration, turning and braking; compare frame rates | CR-010 | In progress; practice course, recovery + 11 PlayMode tests passed; device feel/frame-rate checks pending |
-| CR-012 | P0 | Add readable pothole/bus/obstacle reactions; no unexplained forced failure | CR-011 | Todo |
+| CR-012 | P0 | Add readable pothole/bus/obstacle reactions; no unexplained forced failure | CR-011 | In progress; pothole response implemented; bus and physical acceptance pending |
 | CR-013 | P1 | Tune camera, safe areas and visibility; finger does not obscure critical obstacles | CR-011 | Todo |
 | CR-014 | P1 | Install Android modules and run on a real device; record compatibility issues | CR-011, device and storage | Todo |
 | CR-015 | P0 | Playtest with 5–8 people using GDD criteria; measure device performance and record decisions | CR-012, CR-013 | Todo |

@@ -1,3 +1,25 @@
+# Riding prototype — M1, potholes (0.0.4)
+
+5 October 2026 • [Tiếng Việt](RIDING_PROTOTYPE.vi.md)
+
+Practice now contains two fixed potholes: at (0, 8) and (18.7, 34) in road X/Z metres. Broken brown rims, dark depressions and amber approach strokes make them visible; both leave room to ride around. They never spawn in response to player position. The bottom hint explains avoiding or slowing down.
+
+Crossing at up to 3 m/s has no penalty. Faster entry retains 60% of current speed and prevents acceleration above that reduced speed for 0.45 s. Steering and braking remain available. Visual children wobble briefly without moving the collision shape; a 1.2 s HUD message identifies the cause. There is no extra timer penalty. A 1.2 s immunity window prevents stacked pothole hits; substantial side-wall impacts protect for 0.6 s. Floor contacts do not count as crashes. Recovery/Restart clear feedback, motion and hit count, with 0.5 s respawn protection.
+
+`PotholeResponse` holds the plain-C# thresholds. `Pothole` handles trigger entry, `BikeMotor` owns the temporary speed response, and `BikeImpactView` owns cosmetic movement. An Editor migration (`python3 tools/unity_project.py potholes`) adds hazards to the existing Practice scene without changing its GUID or route. It refuses duplicate application. No new packages or assets requiring LFS were introduced.
+
+Bus behaviour is the next increment. M1 and CR-012 remain open; physical readability, touch feel, performance and Android/Web builds of this increment still require validation.
+
+## 0.0.4 validation
+
+Sixteen PlayMode tests passed on Unity 6000.3.25f1. Added coverage verifies the exact safe-speed boundary, fast trigger entry, continued steering during the response, no stacked hits, speed recovery, slow passage, avoidance and reset cleanup. The authored-route test also confirms it actually hits a pothole before finishing and restarting. Logs are local and ignored: `Logs/pothole-tests.xml`, `Logs/pothole-tests.log`.
+
+iOS 0.0.4 export, signed Xcode 26.6 Debug build, strict signature verification and installation on iPhone 15 Pro Max passed. Launch was explicitly denied because the phone was locked; on-device visual/handling acceptance is pending unlock. No claim of native rendering or performance is made for this build.
+
+---
+
+## Practice course introduced in 0.0.3
+
 # Riding prototype — M1, practice course (0.0.3)
 
 5 October 2026 • [Tiếng Việt](RIDING_PROTOTYPE.vi.md)

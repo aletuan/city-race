@@ -14,7 +14,7 @@ P0 chặn mốc hiện tại; P1 đi sau nền tảng. Hai ngôn ngữ dùng chu
 | CR-006 | P1 | Cài Web support, build và phục vụ qua HTTPS; kiểm tra cảnh/tải trên trình duyệt | CR-004, dung lượng | Xong; ảnh người dùng xác nhận tải/render HTTPS; chưa kiểm tra console |
 | CR-010 | P0 | Input pointer chuẩn hóa, phanh khi nhả/mất focus; chuột/cảm ứng nhất quán | M0 | Đang làm; đã có đường tập, thoát kẹt + 11 test PlayMode đạt; chờ cảm giác lái/kiểm tra fps trên máy thật |
 | CR-011 | P0 | Bộ điều khiển xe có tăng tốc/rẽ/phanh; so sánh frame rate | CR-010 | Đang làm; đã có đường tập, thoát kẹt + 11 test PlayMode đạt; chờ cảm giác lái/kiểm tra fps trên máy thật |
-| CR-012 | P0 | Phản ứng ổ gà/xe buýt/chướng ngại dễ hiểu; không ép thất bại vô cớ | CR-011 | Chưa làm |
+| CR-012 | P0 | Phản ứng ổ gà/xe buýt/chướng ngại dễ hiểu; không ép thất bại vô cớ | CR-011 | Đang làm; đã triển khai ổ gà; chờ xe buýt và nghiệm thu trên máy thật |
 | CR-013 | P1 | Chỉnh camera, safe area, tầm nhìn; ngón tay không che chướng ngại quan trọng | CR-011 | Chưa làm |
 | CR-014 | P1 | Cài module Android, chạy trên thiết bị thật; ghi lỗi tương thích | CR-011, thiết bị và dung lượng | Chưa làm |
 | CR-015 | P0 | Playtest 5–8 người theo GDD; đo hiệu năng thiết bị và ghi quyết định | CR-012, CR-013 | Chưa làm |

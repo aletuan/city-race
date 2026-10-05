@@ -1,3 +1,25 @@
+# Bản lái thử — M1, ổ gà (0.0.4)
+
+5 tháng 10 năm 2026 • [English](RIDING_PROTOTYPE.en.md)
+
+Practice có hai ổ gà cố định tại (0, 8) và (18,7, 34) theo mét X/Z trên đường. Viền nâu vỡ, lòng tối và vệt vàng cam phía trước giúp nhận biết; cả hai đều chừa lối tránh. Không sinh ổ gà theo vị trí người chơi. Hướng dẫn dưới màn hình nhắc né hoặc giảm tốc.
+
+Qua ổ gà ở tốc độ tối đa 3 m/s không bị phạt. Đi nhanh hơn giữ lại 60% tốc độ hiện tại và không tăng quá tốc độ đã giảm trong 0,45 giây. Vẫn được rẽ và phanh. Các phần hình ảnh rung nhẹ, không làm dịch hình va chạm; thông báo 1,2 giây giải thích nguyên nhân. Không cộng thêm thời gian phạt. Bảo vệ 1,2 giây tránh phạt ổ gà chồng nhau; va mạnh vào mặt bên của tường bảo vệ 0,6 giây. Tiếp xúc mặt đường không tính là va chạm mạnh. Thoát kẹt/Chơi lại xóa phản hồi, chuyển động và số lần trúng, đồng thời bảo vệ 0,5 giây sau đặt lại.
+
+`PotholeResponse` giữ ngưỡng bằng C# thuần. `Pothole` xử lý đi vào trigger, `BikeMotor` sở hữu tác động tốc độ tạm thời, `BikeImpactView` chỉ rung hình ảnh. Migration Editor (`python3 tools/unity_project.py potholes`) thêm ổ gà vào Practice mà giữ GUID và tuyến đường. Từ chối chạy trùng. Không thêm package hoặc asset cần LFS.
+
+Xe buýt là phần tiếp theo. M1 và CR-012 còn mở; độ dễ nhìn, cảm giác cảm ứng, hiệu năng và build Android/Web của phần này còn cần kiểm chứng.
+
+## Kiểm chứng 0.0.4
+
+Mười sáu test PlayMode đã đạt trên Unity 6000.3.25f1. Phần thêm kiểm tra ranh giới tốc độ an toàn, đi nhanh vào trigger, vẫn rẽ được lúc phản hồi, không phạt chồng, phục hồi tốc độ, qua chậm, né và xóa trạng thái khi đặt lại. Test tuyến thực tế còn xác nhận đã trúng ổ gà trước khi về đích và chơi lại. Log local, không đưa vào Git: `Logs/pothole-tests.xml`, `Logs/pothole-tests.log`.
+
+Đã xuất iOS 0.0.4, build Debug có ký bằng Xcode 26.6, kiểm tra chữ ký nghiêm ngặt và cài trên iPhone 15 Pro Max. Lệnh mở bị từ chối rõ ràng vì điện thoại khóa; nghiệm thu hình ảnh/cảm giác lái trên thiết bị còn chờ mở khóa. Chưa kết luận hiển thị native hoặc hiệu năng của bản này.
+
+---
+
+## Đường tập được thêm ở 0.0.3
+
 # Bản lái thử — M1, đường tập (0.0.3)
 
 5 tháng 10 năm 2026 • [English](RIDING_PROTOTYPE.en.md)
