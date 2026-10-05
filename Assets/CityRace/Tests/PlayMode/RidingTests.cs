@@ -70,6 +70,18 @@ namespace CityRace.Tests
         }
 
         [UnityTest]
+        public IEnumerator SharpTurnReducesSpeedBeforeChangingDirection()
+        {
+            _motor.SetCommand(Vector2.up);
+            for (var i = 0; i < 100; i++) { yield return new WaitForFixedUpdate(); }
+            var speed = _motor.Speed;
+            _motor.SetCommand(Vector2.right);
+            for (var i = 0; i < 5; i++) { yield return new WaitForFixedUpdate(); }
+            Assert.That(_motor.Speed, Is.LessThan(speed - .5f));
+            Assert.That(Quaternion.Angle(Quaternion.identity, _body.rotation), Is.LessThan(25f));
+        }
+
+        [UnityTest]
         public IEnumerator SolidBoundaryStopsBike()
         {
             _wall = GameObject.CreatePrimitive(PrimitiveType.Cube);

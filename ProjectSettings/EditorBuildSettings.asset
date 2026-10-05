@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/CityRace/Content/Scenes/Riding.unity
-    guid: 43937d5b53e4e409abe8c9e2e266786e
+    path: Assets/CityRace/Content/Scenes/Practice.unity
+    guid: 341a8e4e9f2754d59af0ac529360a6a4
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

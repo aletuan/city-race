@@ -10,6 +10,7 @@ namespace CityRace.Presentation
         public void Configure(Text label) { _label = label; }
         private void Start()
         {
+            if (_label == null) { return; }
             // Stable key: riding.drag_hint. Only two prototype translations are needed now.
             _label.text = Application.systemLanguage == SystemLanguage.Vietnamese
                 ? "Kéo để lái • Nhả tay để phanh" : "Drag to ride • Release to brake";

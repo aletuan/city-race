@@ -1,3 +1,33 @@
+# Bản lái thử — M1, đường tập (0.0.3)
+
+5 tháng 10 năm 2026 • [English](RIDING_PROTOTYPE.en.md)
+
+Cảnh hiện tại: `Assets/CityRace/Content/Scenes/Practice.unity`. Giữ lại Smoke và Riding đường thẳng cũ, nhưng bật Practice để build. Chỉ tạo cảnh chưa tồn tại bằng `python3 tools/unity_project.py practice`; công cụ không ghi đè cảnh đã có.
+
+## Vòng chơi hiện tại
+
+Rời nhà, theo vạch vàng qua bốn góc cua trái/phải và đoạn hẹp, rồi dừng trong ô vàng trước cổng công ty. Tuyến dài khoảng 107 m theo tim đường. Đi qua các checkpoint đúng thứ tự và giữ tốc độ dưới 0,4 m/s trong vùng đích 0,7 giây để hoàn thành. Phía trên có hướng đi và thời gian. Chọn Chơi lại bất cứ lúc nào để bắt đầu lượt mới mà không cần mở lại app.
+
+Vẫn điều khiển bằng kéo tương đối một ngón. Khi rẽ gắt, ga mục tiêu giảm dần (còn 40% khi lệch hướng 100°), giới hạn rẽ 165°/s. Tốc độ thẳng tối đa vẫn 8 m/s; tăng tốc/phanh 5/16 m/s², mô phỏng 50 Hz. Đây là thông số thử nghiệm, chưa phải cảm giác lái đã được người chơi xác nhận.
+
+Thoát kẹt: nhả tay rồi chạm giữ yên 1,2 giây khi xe dừng. Màn hình hiện tiến trình. Xe trở về checkpoint đã qua phía trước đó theo hành trình, về tốc độ không, phải nhả tay trước khi chạy tiếp; cộng 2 giây. Chiếu vị trí lên tuyến giúp giới hạn điểm hồi phục khi đi ngược, tránh nhảy tới phía trước trên hành trình (điểm xuất phát là giới hạn thấp nhất). Giữ ngắn hoặc gián đoạn không kích hoạt. Khi hoàn thành không thể hồi phục; Chơi lại xóa trạng thái lượt cũ. Camera mở rộng với orthographic size 12 và chuyển ngay sau lần hồi phục xa.
+
+## Phân chia trách nhiệm và giới hạn
+
+`PracticeProgress` giữ tiến độ theo thứ tự, điều kiện dừng và phạt hồi phục bằng C# thuần. `PracticeCourse` kết nối vị trí Unity, input, đặt lại vật lý và vòng đời. `PracticeHud` quan sát lượt thử và gửi thao tác Chơi lại. Hình học đường tạo một lần trong Editor, dùng chung vật liệu và static geometry; không tạo đường mỗi frame.
+
+Đây vẫn là đường tập offline, chưa phải cuộc đua hoàn chỉnh. Chưa có ổ gà, xe buýt, multiplayer hay luật giao thông thật. HUD thử nghiệm nhỏ tiếp tục ngoại lệ tạm dùng uGUI/font có sẵn đã ghi nhận; còn TextMeshPro/khóa bản địa hóa và kiểm tra đủ dấu tiếng Việt trước HUD sản phẩm. Giảm ga khi cua cần phản hồi chơi thật. Chưa kết luận fps, nhiệt độ máy hay tương thích Android/Web của phần này.
+
+## Kiểm chứng 0.0.3
+
+Mười một test Editor PlayMode đã đạt trên Unity 6000.3.25f1, gồm bấm Chơi lại bằng con trỏ giả lập và lái tự động qua tuyến đã tạo. Dùng lệnh Unity đã ghim trong ghi chú lịch sử, đổi tên log thành `Logs/practice-tests.xml` và `Logs/practice-tests.log`. Phạm vi gồm chạy tuyến thực tế, dừng để về đích, Chơi lại qua sự kiện con trỏ, giữ yên để thoát kẹt, không hồi phục lặp khi vẫn giữ tay, giới hạn khi đi ngược và giảm tốc lúc rẽ gắt, cùng test hồi quy di chuyển/input cũ.
+
+Đã xuất iOS 0.0.3 và build Debug có ký bằng Xcode 26.6. Kiểm tra chữ ký nghiêm ngặt, cài và khởi chạy trên iPhone 15 Pro Max (iOS 26.3 beta) đã đạt; tiến trình vẫn tồn tại sau khi mở. Điện thoại đang hiển thị ứng dụng khác lúc chụp kiểm tra, nên nghiệm thu hình ảnh/cảm giác lái native còn chờ phản hồi người dùng. Không lưu ảnh không liên quan vào bằng chứng dự án.
+
+---
+
+## Bằng chứng lịch sử 0.0.2
+
 # Bản lái thử — M1, phần đầu
 
 5 tháng 10 năm 2026 • [English](RIDING_PROTOTYPE.en.md)

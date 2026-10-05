@@ -97,6 +97,7 @@ def execute(editor, action):
         raise RuntimeError("No matching initialised project. Run init first.")
     methods = {
         "scene": ("CityRace.Editor.CityRaceBootstrap.CreateSmokeScene", None),
+        "practice": ("CityRace.Editor.PracticeBootstrap.CreateScene", None),
         "riding": ("CityRace.Editor.RidingBootstrap.CreateScene", None),
         "export-ios": ("CityRace.Editor.CityRaceBootstrap.ExportIos", "iOS"),
         "build-web": ("CityRace.Editor.CityRaceBootstrap.BuildWeb", "WebGL"),
@@ -118,7 +119,7 @@ def execute(editor, action):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("action", choices=["preflight", "init", "scene", "riding", "export-ios", "build-web"])
+    parser.add_argument("action", choices=["preflight", "init", "scene", "riding", "practice", "export-ios", "build-web"])
     parser.add_argument("--editor", type=Path, default=DEFAULT_EDITOR)
     parser.add_argument("--template", type=Path, help="Official URP blank .tgz; optional when found in the editor")
     args = parser.parse_args()

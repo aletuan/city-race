@@ -1,3 +1,33 @@
+# Riding prototype — M1, practice course (0.0.3)
+
+5 October 2026 • [Tiếng Việt](RIDING_PROTOTYPE.vi.md)
+
+Current scene: `Assets/CityRace/Content/Scenes/Practice.unity`. Smoke and the original straight Riding scene remain available, but Practice is the enabled build scene. Generate only a missing scene with `python3 tools/unity_project.py practice`; existing scenes are never overwritten by the generator.
+
+## Current play loop
+
+Leave the home, follow the yellow route through four left/right corners and a narrow passage, then stop in the yellow square at the company gate. The route is about 107 m along its centerline. Reach checkpoints in order and remain below 0.4 m/s in the finish zone for 0.7 seconds to complete. A route compass and elapsed time appear at the top. Use Restart at any time for a fresh run without reopening the app.
+
+Controls retain relative one-finger dragging. Sharp turns now reduce target throttle progressively (down to 40% at a 100° heading error), and steering caps at 165°/s. Straight-line maximum speed remains 8 m/s; acceleration/braking remain 5/16 m/s², simulation 50 Hz. These are provisional tuning values, not user-validated handling.
+
+To recover: release, then touch and hold still for 1.2 seconds while stopped. A progress message appears. Recovery returns to an earlier passed checkpoint, zeroes velocity and requires releasing before driving again; it adds two seconds. Route projection limits recovery during backtracking so it cannot skip forward along the course (the start is the lower bound). Short/interrupted holds do not trigger it. Finished runs cannot recover; Restart clears the run. The wider camera uses orthographic size 12 and snaps after long resets.
+
+## Boundaries and limitations
+
+`PracticeProgress` owns ordered progress, the stop requirement and recovery penalty in plain C#. `PracticeCourse` adapts Unity positions, input, physics reset and lifecycle. `PracticeHud` observes the course and dispatches Restart. Track geometry is generated once in the Editor, with shared materials and static geometry; no per-frame track generation.
+
+This remains an offline practice course, not a complete race. No potholes, bus traffic, multiplayer or real traffic rules yet. The small prototype HUD continues the documented temporary uGUI/built-in-font approach; TextMeshPro/keyed localization and full Vietnamese glyph QA remain before production HUD work. Automatic corner easing needs feedback from physical playtesting. Device frame rates, thermal performance and Android/Web compatibility of this increment are not yet established.
+
+## Validation for 0.0.3
+
+Eleven Editor PlayMode tests passed on Unity 6000.3.25f1, including synthetic pointer clicks on Restart and an automated drive through the authored course. Use the same pinned Unity test command shown in the historical notes, with `Logs/practice-tests.xml` and `Logs/practice-tests.log`. Coverage includes the actual authored route, stop-to-finish, Restart through pointer events, stationary-hold recovery, no repeated recovery while held, backtracking limits and sharp-turn slowing, plus prior movement/input regression tests.
+
+iOS 0.0.3 export and signed Xcode 26.6 Debug build passed. Strict code-sign verification, installation and process launch on iPhone 15 Pro Max (iOS 26.3 beta) passed; the process was still present after launch. The phone was displaying another app during the screenshot check, so native visual/handling acceptance remains pending user feedback. No unrelated screenshot is stored in project evidence.
+
+---
+
+## Historical 0.0.2 evidence
+
 # Riding prototype — M1, first increment
 
 5 October 2026 • [Tiếng Việt](RIDING_PROTOTYPE.vi.md)

@@ -9,7 +9,7 @@ namespace CityRace.Gameplay.Riding
         [SerializeField] private float _maxSpeedMetersPerSecond = 8f;
         [SerializeField] private float _acceleration = 5f;
         [SerializeField] private float _braking = 16f;
-        [SerializeField] private float _turnDegreesPerSecond = 135f;
+        [SerializeField] private float _turnDegreesPerSecond = 165f;
         private Rigidbody _body;
         private Vector2 _command;
         private bool _manualInput;
@@ -25,16 +25,30 @@ namespace CityRace.Gameplay.Riding
             _command = Vector2.ClampMagnitude(command, 1f);
         }
 
+        public void ResetPose(Vector3 position, Quaternion rotation)
+        {
+            _command = Vector2.zero;
+            _manualInput = false;
+            _body.linearVelocity = Vector3.zero;
+            _body.angularVelocity = Vector3.zero;
+            _body.position = position;
+            _body.rotation = rotation;
+        }
+
         private void FixedUpdate()
         {
             var command = _manualInput ? _command : _input != null ? _input.Command : Vector2.zero;
             var speed = Speed;
-            var target = command.magnitude * _maxSpeedMetersPerSecond;
+            var desired = command.sqrMagnitude > 0.0001f
+                ? Quaternion.LookRotation(new Vector3(command.x, 0f, command.y)) : _body.rotation;
+            var turnAngle = Quaternion.Angle(_body.rotation, desired);
+            // Ease the throttle into sharp corners; straight-line top speed is unchanged.
+            var cornerFactor = Mathf.Lerp(1f, 0.4f, Mathf.InverseLerp(20f, 100f, turnAngle));
+            var target = command.magnitude * _maxSpeedMetersPerSecond * cornerFactor;
             var nextSpeed = Mathf.MoveTowards(speed, target, (target > speed ? _acceleration : _braking) * Time.fixedDeltaTime);
             var rotation = _body.rotation;
             if (command.sqrMagnitude > 0.0001f)
             {
-                var desired = Quaternion.LookRotation(new Vector3(command.x, 0f, command.y));
                 // Steering needs forward motion; never rotate in place or slide sideways.
                 rotation = Quaternion.RotateTowards(rotation, desired,
                     _turnDegreesPerSecond * Mathf.Clamp01(speed / 2f) * Time.fixedDeltaTime);
@@ -45,7 +59,11 @@ namespace CityRace.Gameplay.Riding
 
         private void OnDisable()
         {
-            if (_body != null) { _body.linearVelocity = Vector3.zero; }
+            if (_body != null)
+            {
+                _body.linearVelocity = Vector3.zero;
+                _body.angularVelocity = Vector3.zero;
+            }
         }
     }
 }

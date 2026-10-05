@@ -11,7 +11,8 @@ namespace CityRace.Presentation
         {
             if (_target == null) { return; }
             var desired = _target.position + _offset;
-            transform.position = Vector3.Lerp(transform.position, desired, 1f - Mathf.Exp(-8f * Time.deltaTime));
+            transform.position = (desired - transform.position).sqrMagnitude > 225f
+                ? desired : Vector3.Lerp(transform.position, desired, 1f - Mathf.Exp(-8f * Time.deltaTime));
             transform.rotation = Quaternion.Euler(58f, 0f, 0f);
         }
     }
