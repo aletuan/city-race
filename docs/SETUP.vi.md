@@ -97,3 +97,11 @@ Người dùng đăng xuất/đăng nhập lại Xcode; Developer team hiện c�
 Lỗi mount DDI cụ thể là `kAMDMobileImageMounterDeviceLocked`; mở khóa iPhone giải quyết được mà không đổi thiết lập bảo mật thiết bị. `devicectl device install app` và `device process launch` thành công với `com.aletuan.cityrace.dev`. Ảnh chụp thiết bị qua Xcode xác nhận Smoke render trên iPhone 15 Pro Max, iOS 26.3 beta (23D5089e), chiều dọc: thấy đường, vạch kẻ và xe dạng khối đỏ. Ảnh giữ local tại `Logs/smoke-iphone.png`; log build đã ký tại `Logs/xcode-ios-signed.log`. Các file này được ignore, không phải asset của repository.
 
 CR-005 hoàn tất. Đây là kiểm tra khởi chạy/render ngắn, chưa kiểm chứng gameplay lái xe, chạy lâu hoặc hiệu năng. Camera dọc cắt phần lớn nhà ở hai mép; chỉnh khung hình trong M1. Còn Web smoke test (CR-006) để hoàn tất M0.
+
+## Build Web và phục vụ HTTPS — 05/10/2026
+
+`python3 tools/unity_project.py build-web` đạt với Unity 6000.3.25f1, sinh `Builds/Web`. Development Build này chưa nén: Web.wasm là 99.210.301 byte; chưa phải ngân sách tải bản phát hành. Giữ cấu hình Web/PC URP do Unity sinh.
+
+`python3 tools/serve_web.py` chỉ phục vụ Builds/Web trên 127.0.0.1:8765, tắt liệt kê thư mục và chặn đường dẫn resolve ra ngoài thư mục này. Server trả application/wasm cho WebAssembly, application/javascript cho JavaScript và hỗ trợ header gzip/Brotli khi build có các file nén đó. Đã cài `cloudflared` 2026.9.3 qua Homebrew để tạo tunnel HTTPS tạm, không cài background service. HTTPS HEAD cho Web.wasm trả 200, application/wasm và Content-Length khớp. Đây là kiểm tra header phục vụ file, chưa phải render.
+
+Điều hướng trình duyệt tự động bị từ chối vì không xác minh được chính sách truy cập do quản trị viên áp dụng. Không bỏ qua kiểm tra bảo mật. Đang chờ người dùng kiểm tra hình ảnh; chưa xác minh console, tải hoàn tất và render cảnh trên trình duyệt. CR-006 và M0 chưa hoàn tất. Dừng server/tunnel tạm sau khi người dùng kiểm tra. Log local được ignore: Logs/build-web.log, web-server.log và web-tunnel.log.

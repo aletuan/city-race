@@ -97,3 +97,11 @@ The user signed out/in to Xcode; the existing Developer team then loaded success
 The DDI mount failure was specifically `kAMDMobileImageMounterDeviceLocked`; unlocking the iPhone resolved it without changing device security settings. `devicectl device install app` and `device process launch` succeeded for `com.aletuan.cityrace.dev`. An Xcode device screenshot confirms Smoke rendering on iPhone 15 Pro Max, iOS 26.3 beta (23D5089e), portrait: road, lane markings and red bike marker visible. Screenshot retained locally at `Logs/smoke-iphone.png`; signed build log at `Logs/xcode-ios-signed.log`. These are ignored, not repository assets.
 
 CR-005 is complete. This was a short launch/render check, not driving gameplay, endurance or performance validation. The portrait camera crops most buildings at the edges; tune framing in M1. Web smoke validation (CR-006) remains necessary to complete M0.
+
+## Web build and HTTPS delivery — 5 October 2026
+
+`python3 tools/unity_project.py build-web` passed with Unity 6000.3.25f1, producing `Builds/Web`. This Development Build is uncompressed: Web.wasm is 99,210,301 bytes; this is not a release payload budget. Unity-generated Web/PC URP settings are retained.
+
+`python3 tools/serve_web.py` serves only Builds/Web on 127.0.0.1:8765, disables directory listings and rejects resolved paths outside that directory. It sends application/wasm for WebAssembly, application/javascript for JavaScript, and supports gzip/Brotli headers when those files are generated. `cloudflared` 2026.9.3 was installed through Homebrew for a temporary HTTPS test tunnel, without a background service. HTTPS HEAD for Web.wasm returned 200, application/wasm and the matching Content-Length. This checks delivery headers, not rendering.
+
+Automated browser navigation was denied because the browser could not verify an admin-enforced access policy. No security bypass was attempted. User visual verification is pending; browser console, loading completion and scene rendering have not been verified. CR-006 and M0 remain incomplete. Stop the temporary server/tunnel after the user check. Logs are local/ignored: Logs/build-web.log, web-server.log and web-tunnel.log.
