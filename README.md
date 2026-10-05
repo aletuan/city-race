@@ -7,9 +7,12 @@ A multiplayer motorbike racing game set in Sài Gòn rush-hour traffic, with one
 - Game design v0.2: [Tiếng Việt](docs/GDD.vi.md) · [English](docs/GDD.en.md)
 - Technical stack v0.1: [Tiếng Việt](docs/TECH_STACK.vi.md) · [English](docs/TECH_STACK.en.md)
 - Engineering guidelines v0.1: [Tiếng Việt](docs/ENGINEERING_GUIDELINES.vi.md) · [English](docs/ENGINEERING_GUIDELINES.en.md)
+- Roadmap: [Tiếng Việt](docs/ROADMAP.vi.md) · [English](docs/ROADMAP.en.md)
+- Backlog: [Tiếng Việt](docs/BACKLOG.vi.md) · [English](docs/BACKLOG.en.md)
+- Setup and M0 validation: [Tiếng Việt](docs/SETUP.vi.md) · [English](docs/SETUP.en.md)
 - [Agent entry point](AGENTS.md)
 
-Current stage: design and technical planning. This repository contains documentation only; no Unity project, installed packages, game builds, or runtime benchmarks exist yet. The technical documents define the implementation baseline and validation gates. Keep both language editions aligned.
+Current stage: design and technical planning. This repository contains documentation and unvalidated bootstrap tooling; no generated Unity project, installed Unity packages, game builds, or runtime benchmarks exist yet. M0 establishes the first verified iPhone and Web smoke builds. The technical documents define the implementation baseline and validation gates. Keep both language editions aligned.
 
 ## Starting stack
 
