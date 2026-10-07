@@ -98,6 +98,7 @@ def execute(editor, action):
     methods = {
         "scene": ("CityRace.Editor.CityRaceBootstrap.CreateSmokeScene", None),
         "potholes": ("CityRace.Editor.PotholeBootstrap.AddToPractice", None),
+        "look-dusk": ("CityRace.Editor.DuskLookBootstrap.Apply", None),
         "practice": ("CityRace.Editor.PracticeBootstrap.CreateScene", None),
         "riding": ("CityRace.Editor.RidingBootstrap.CreateScene", None),
         "export-ios": ("CityRace.Editor.CityRaceBootstrap.ExportIos", "iOS"),
@@ -120,7 +121,7 @@ def execute(editor, action):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("action", choices=["preflight", "init", "scene", "riding", "practice", "potholes", "export-ios", "build-web"])
+    parser.add_argument("action", choices=["preflight", "init", "scene", "riding", "practice", "potholes", "look-dusk", "export-ios", "build-web"])
     parser.add_argument("--editor", type=Path, default=DEFAULT_EDITOR)
     parser.add_argument("--template", type=Path, help="Official URP blank .tgz; optional when found in the editor")
     args = parser.parse_args()
