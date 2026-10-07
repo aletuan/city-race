@@ -26,6 +26,6 @@ Decided 7 October 2026: **direction B — Sài Gòn at dusk.** Stylised low-poly
 
 ## Open
 
-- Device readability, especially potholes in shadow, and frame rate on iPhone 15 Pro Max are **not yet verified**.
+- 7 Oct 2026: signed Debug build (0.0.5 + look pass) ran on the iPhone 15 Pro Max; the user reported readability, potholes in shadow, lighting, camera framing and smoothness all OK. This is a short owner check, not a measured frame-rate/thermal baseline (Xcode logged thermal state Fair shortly after launch) or a group playtest.
 - HUD restyle (UI Toolkit, Be Vietnam Pro, PrimeTween) is the next pass.
 - Replace primitive bike/rider and shophouses with Blender-made models in this palette; set up Git LFS first.
